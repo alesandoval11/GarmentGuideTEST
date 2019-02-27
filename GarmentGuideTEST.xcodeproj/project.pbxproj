@@ -13,6 +13,9 @@
 		01B6CD3E2225DAFC00A71469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B6CD3D2225DAFC00A71469 /* Assets.xcassets */; };
 		01B6CD412225DAFC00A71469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01B6CD3F2225DAFC00A71469 /* LaunchScreen.storyboard */; };
 		01B6CD4C2225DAFC00A71469 /* GarmentGuideTESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B6CD4B2225DAFC00A71469 /* GarmentGuideTESTTests.swift */; };
+		01FE41EE222618FB0062E08C /* secondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41ED222618FB0062E08C /* secondView.swift */; };
+		01FE41F0222621160062E08C /* thirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41EF222621160062E08C /* thirdView.swift */; };
+		01FE41F22226257A0062E08C /* fourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41F12226257A0062E08C /* fourthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		01B6CD472225DAFC00A71469 /* GarmentGuideTESTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GarmentGuideTESTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B6CD4B2225DAFC00A71469 /* GarmentGuideTESTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentGuideTESTTests.swift; sourceTree = "<group>"; };
 		01B6CD4D2225DAFC00A71469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01FE41ED222618FB0062E08C /* secondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondView.swift; sourceTree = "<group>"; };
+		01FE41EF222621160062E08C /* thirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdView.swift; sourceTree = "<group>"; };
+		01FE41F12226257A0062E08C /* fourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				01B6CD362225DAFB00A71469 /* AppDelegate.swift */,
+				01FE41EF222621160062E08C /* thirdView.swift */,
+				01FE41F12226257A0062E08C /* fourthView.swift */,
 				01B6CD382225DAFB00A71469 /* ViewController.swift */,
+				01FE41ED222618FB0062E08C /* secondView.swift */,
 				01B6CD3A2225DAFB00A71469 /* Main.storyboard */,
 				01B6CD3D2225DAFC00A71469 /* Assets.xcassets */,
 				01B6CD3F2225DAFC00A71469 /* LaunchScreen.storyboard */,
@@ -197,8 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01FE41F0222621160062E08C /* thirdView.swift in Sources */,
 				01B6CD392225DAFB00A71469 /* ViewController.swift in Sources */,
+				01FE41EE222618FB0062E08C /* secondView.swift in Sources */,
 				01B6CD372225DAFB00A71469 /* AppDelegate.swift in Sources */,
+				01FE41F22226257A0062E08C /* fourthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GarmentGuideTEST/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -378,6 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GarmentGuideTEST/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
