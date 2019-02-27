@@ -7,7 +7,20 @@
 //
 
 import UIKit
-
+class Node {
+    var name: String
+    var location: (Int,Int)
+    var adjacent: [Node] = []
+    
+    init(name: String, location: (Int, Int), adjacent: [Node]) {
+        self.name = name
+        self.location = location
+        self.adjacent = adjacent
+    }
+    
+    
+}
+//Undirected graph
 class ViewController: UIViewController {
 
 
@@ -21,7 +34,7 @@ class ViewController: UIViewController {
     @IBAction func bdg1(_ sender: UIButton) {
           selectl.text = "EABA"
         self.performSegue(withIdentifier: "SegueView2", sender: self)
-        print("EABA selected!")
+        print("EABA selected")
     }
     
     @IBAction func bdg2(_ sender: UIButton) {
