@@ -6,9 +6,13 @@
 //  Copyright © 2019 Alejandro Inclan. All rights reserved.
 //
 
-print("hello")
-
 class Trilateration {
-	var int: x
+	var x: Int
+    var y: Int
+    init (x: Int, y:Int)
+    {
+        self.x = x
+        self.y = y
+    }
 
 }

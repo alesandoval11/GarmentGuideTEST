@@ -16,6 +16,7 @@
 		01FE41EE222618FB0062E08C /* secondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41ED222618FB0062E08C /* secondView.swift */; };
 		01FE41F0222621160062E08C /* thirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41EF222621160062E08C /* thirdView.swift */; };
 		01FE41F22226257A0062E08C /* fourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41F12226257A0062E08C /* fourthView.swift */; };
+		712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A2FE3222DB70300880A58 /* Trilateration.swift */; };
 		717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717AB2FD222DA6A500516EB8 /* PathFinding.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		01FE41ED222618FB0062E08C /* secondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondView.swift; sourceTree = "<group>"; };
 		01FE41EF222621160062E08C /* thirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdView.swift; sourceTree = "<group>"; };
 		01FE41F12226257A0062E08C /* fourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourthView.swift; sourceTree = "<group>"; };
+		712A2FE3222DB70300880A58 /* Trilateration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trilateration.swift; sourceTree = "<group>"; };
 		717AB2FD222DA6A500516EB8 /* PathFinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 		01B6CD352225DAFB00A71469 /* GarmentGuideTEST */ = {
 			isa = PBXGroup;
 			children = (
+				712A2FE3222DB70300880A58 /* Trilateration.swift */,
 				01B6CD362225DAFB00A71469 /* AppDelegate.swift */,
 				01FE41EF222621160062E08C /* thirdView.swift */,
 				01FE41F12226257A0062E08C /* fourthView.swift */,
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01FE41F0222621160062E08C /* thirdView.swift in Sources */,
+				712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */,
 				01B6CD392225DAFB00A71469 /* ViewController.swift in Sources */,
 				717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */,
 				01FE41EE222618FB0062E08C /* secondView.swift in Sources */,
