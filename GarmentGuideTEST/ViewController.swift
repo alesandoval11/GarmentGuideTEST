@@ -7,19 +7,7 @@
 //
 
 import UIKit
-class Node {
-    var name: String
-    var location: (Int,Int)
-    var adjacent: [Node] = []
-    
-    init(name: String, location: (Int, Int), adjacent: [Node]) {
-        self.name = name
-        self.location = location
-        self.adjacent = adjacent
-    }
-    
-    
-}
+
 //Undirected graph
 class ViewController: UIViewController {
 

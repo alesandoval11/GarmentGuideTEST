@@ -16,6 +16,7 @@
 		01FE41EE222618FB0062E08C /* secondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41ED222618FB0062E08C /* secondView.swift */; };
 		01FE41F0222621160062E08C /* thirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41EF222621160062E08C /* thirdView.swift */; };
 		01FE41F22226257A0062E08C /* fourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41F12226257A0062E08C /* fourthView.swift */; };
+		717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717AB2FD222DA6A500516EB8 /* PathFinding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		01FE41ED222618FB0062E08C /* secondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondView.swift; sourceTree = "<group>"; };
 		01FE41EF222621160062E08C /* thirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdView.swift; sourceTree = "<group>"; };
 		01FE41F12226257A0062E08C /* fourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourthView.swift; sourceTree = "<group>"; };
+		717AB2FD222DA6A500516EB8 /* PathFinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				01B6CD3D2225DAFC00A71469 /* Assets.xcassets */,
 				01B6CD3F2225DAFC00A71469 /* LaunchScreen.storyboard */,
 				01B6CD422225DAFC00A71469 /* Info.plist */,
+				717AB2FD222DA6A500516EB8 /* PathFinding.swift */,
 			);
 			path = GarmentGuideTEST;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				01FE41F0222621160062E08C /* thirdView.swift in Sources */,
 				01B6CD392225DAFB00A71469 /* ViewController.swift in Sources */,
+				717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */,
 				01FE41EE222618FB0062E08C /* secondView.swift in Sources */,
 				01B6CD372225DAFB00A71469 /* AppDelegate.swift in Sources */,
 				01FE41F22226257A0062E08C /* fourthView.swift in Sources */,
