@@ -18,6 +18,7 @@
 		01FE41F22226257A0062E08C /* fourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41F12226257A0062E08C /* fourthView.swift */; };
 		712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A2FE3222DB70300880A58 /* Trilateration.swift */; };
 		717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717AB2FD222DA6A500516EB8 /* PathFinding.swift */; };
+		71990A04224024F4007EBA4C /* beacons.json in Resources */ = {isa = PBXBuildFile; fileRef = 71990A03224024F4007EBA4C /* beacons.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		01FE41F12226257A0062E08C /* fourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourthView.swift; sourceTree = "<group>"; };
 		712A2FE3222DB70300880A58 /* Trilateration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trilateration.swift; sourceTree = "<group>"; };
 		717AB2FD222DA6A500516EB8 /* PathFinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinding.swift; sourceTree = "<group>"; };
+		71990A03224024F4007EBA4C /* beacons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beacons.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				01FE41EF222621160062E08C /* thirdView.swift */,
 				01FE41F12226257A0062E08C /* fourthView.swift */,
 				01B6CD382225DAFB00A71469 /* ViewController.swift */,
+				71990A03224024F4007EBA4C /* beacons.json */,
 				01FE41ED222618FB0062E08C /* secondView.swift */,
 				01B6CD3A2225DAFB00A71469 /* Main.storyboard */,
 				01B6CD3D2225DAFC00A71469 /* Assets.xcassets */,
@@ -195,6 +198,7 @@
 				01B6CD412225DAFC00A71469 /* LaunchScreen.storyboard in Resources */,
 				01B6CD3E2225DAFC00A71469 /* Assets.xcassets in Resources */,
 				01B6CD3C2225DAFB00A71469 /* Main.storyboard in Resources */,
+				71990A04224024F4007EBA4C /* beacons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

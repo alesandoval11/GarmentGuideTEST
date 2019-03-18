@@ -20,5 +20,22 @@ class Node {
         self.adjacent = adjacent
         self.error = error
     }
-    
+}
+
+//Get Nodes and connections from txt file
+
+func readFile(fileName: String) -> Any?
+{
+    var json: Any?
+    if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+        do {
+            let fileUrl = URL(fileURLWithPath: path)
+            // Getting data from JSON file using the file URL
+            let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
+            json = try? JSONSerialization.jsonObject(with: data)
+        } catch {
+            // Handle error here
+        }
+    }
+    return json
 }
