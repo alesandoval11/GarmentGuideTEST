@@ -8,34 +8,25 @@
 
 import Foundation
 
-class Node {
-    var name: String
-    var location: (Int,Int)
-    var adjacent: [Node] = []
-    var error: Int
-    
-    init(name: String, location: (Int, Int), adjacent: [Node], error: Int) {
-        self.name = name
-        self.location = location
-        self.adjacent = adjacent
-        self.error = error
-    }
+struct Node: Codable {
+    var id: Int
+    var coordinates: [Int]
+    var adjacent: [Int]
 }
 
 //Get Nodes and connections from txt file
 
-func readFile(fileName: String) -> Any?
-{
-    var json: Any?
-    if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+func readFile() {
+    if let path = Bundle.main.url(forResource: "beacons", withExtension: "json") {
         do {
-            let fileUrl = URL(fileURLWithPath: path)
-            // Getting data from JSON file using the file URL
-            let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
-            json = try? JSONSerialization.jsonObject(with: data)
+            let data = try Data(contentsOf: path)
+            let decoder = JSONDecoder()
+            let point = try decoder.decode(Node.self, from: data)
+            print(point.id)
+            print(point.coordinates)
+            print(point.adjacent)
         } catch {
-            // Handle error here
+            print("Error")
         }
     }
-    return json
 }

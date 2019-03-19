@@ -23,7 +23,7 @@ class ViewController: UIViewController {
           selectl.text = "EABA"
         self.performSegue(withIdentifier: "SegueView2", sender: self)
         print("EABA selected")
-        readFile(path: "/Users/Ray/Desktop/CSCE483/GarmentGuideTEST/beacons.txt")
+        readFile()
     }
     
     @IBAction func bdg2(_ sender: UIButton) {
