@@ -1,36 +1,25 @@
 {
-    "location":[
+    "EABA":[
         {
-            "id": 1,
+            "id": 012345,
+            "label": "Girl's Restroom",
+            "type": "location",
+            "coordinates": [0,0],
+            "connections": [5,6]
+        },
+        {
+            "id": 98765,
+            "label": "0",
+            "type": "joint",
             "coordinates": [1,1],
-            "adjacent": [2]
+            "connections": [5,6]
         },
         {
-            "id": 2,
+            "id": 20908,
+            "label": "1",
+            "type": "joint",
             "coordinates": [2,2],
-            "adjacent": [1,3]
+            "connections": [5,6]
         },
-        {
-            "id": 3,
-            "coordinates": [3,3],
-            "adjacent": [2]
-        }
-    ],
-    "node":[
-        {
-            "id": 4,
-            "coordinates": [4,4],
-            "adjacent": [5,6]
-        },
-        {
-            "id": 5,
-            "coordinates": [5,5],
-            "adjacent": [4]
-        },
-        {
-            "id": 6,
-            "coordinates": [6,6],
-            "adjacent": [4]
-        }
     ]
 }

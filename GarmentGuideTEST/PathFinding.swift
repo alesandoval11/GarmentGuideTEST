@@ -8,29 +8,26 @@
 
 import Foundation
 
-//Need to rename variables because of confusion
-struct Graph: Decodable {
-    var node: [Node]
+class Node: Decodable {
+    let id: Int
+    let coordinates: [Int]
+    let connections: [Connection]
+    var visited: Bool
+    
+    init(id: Int, coordinates: [Int], connections: [Connection]) {
+        self.id = id
+        self.coordinates = coordinates
+        self.connections = connections
+        self.visited = false
+    }
 }
 
-struct Node: Decodable {
-    var id: Int
-    var coordinates: [Int]
-    var adjacent: [Int]
-}
-
-//JSON Decoder
-func readFile() {
-    if let path = Bundle.main.url(forResource: "beacons", withExtension: "json") {
-        do {
-            let data = try Data(contentsOf: path)
-            let decoder = JSONDecoder()
-            let point = try decoder.decode(Graph.self, from: data)
-            print(point.node[0].id)
-            print(point.node[1].coordinates)
-            print(point.node[2].adjacent)
-        } catch {
-            print("Error")
-        }
+class Connection: Decodable {
+    let to: Node
+    let weight: Int
+    
+    init(to: Node, weight: Int) {
+        self.to = to
+        self.weight = weight
     }
 }
