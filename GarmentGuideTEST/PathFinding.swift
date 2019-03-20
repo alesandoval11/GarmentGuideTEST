@@ -8,23 +8,27 @@
 
 import Foundation
 
-struct Node: Codable {
+//Need to rename variables because of confusion
+struct Graph: Decodable {
+    var node: [Node]
+}
+
+struct Node: Decodable {
     var id: Int
     var coordinates: [Int]
     var adjacent: [Int]
 }
 
-//Get Nodes and connections from txt file
-
+//JSON Decoder
 func readFile() {
     if let path = Bundle.main.url(forResource: "beacons", withExtension: "json") {
         do {
             let data = try Data(contentsOf: path)
             let decoder = JSONDecoder()
-            let point = try decoder.decode(Node.self, from: data)
-            print(point.id)
-            print(point.coordinates)
-            print(point.adjacent)
+            let point = try decoder.decode(Graph.self, from: data)
+            print(point.node[0].id)
+            print(point.node[1].coordinates)
+            print(point.node[2].adjacent)
         } catch {
             print("Error")
         }
