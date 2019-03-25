@@ -19,6 +19,10 @@
 		712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A2FE3222DB70300880A58 /* Trilateration.swift */; };
 		717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717AB2FD222DA6A500516EB8 /* PathFinding.swift */; };
 		71990A04224024F4007EBA4C /* beacons.json in Resources */ = {isa = PBXBuildFile; fileRef = 71990A03224024F4007EBA4C /* beacons.json */; };
+		71CD935C2242BEA1002B4553 /* scannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD935B2242BEA1002B4553 /* scannerView.swift */; };
+		71CD93602242C8BA002B4553 /* BeaconScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD935D2242C8BA002B4553 /* BeaconScanner.swift */; };
+		71CD93612242C8BA002B4553 /* Eddystone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD935E2242C8BA002B4553 /* Eddystone.swift */; };
+		71CD93622242C8BA002B4553 /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD935F2242C8BA002B4553 /* DispatchTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		712A2FE3222DB70300880A58 /* Trilateration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trilateration.swift; sourceTree = "<group>"; };
 		717AB2FD222DA6A500516EB8 /* PathFinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinding.swift; sourceTree = "<group>"; };
 		71990A03224024F4007EBA4C /* beacons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beacons.json; sourceTree = "<group>"; };
+		71CD935B2242BEA1002B4553 /* scannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scannerView.swift; sourceTree = "<group>"; };
+		71CD935D2242C8BA002B4553 /* BeaconScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BeaconScanner.swift; path = /Users/Ray/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/BeaconScanner.swift; sourceTree = "<absolute>"; };
+		71CD935E2242C8BA002B4553 /* Eddystone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Eddystone.swift; path = /Users/Ray/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/Eddystone.swift; sourceTree = "<absolute>"; };
+		71CD935F2242C8BA002B4553 /* DispatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DispatchTimer.swift; path = /Users/Ray/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/DispatchTimer.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +102,12 @@
 				01FE41EF222621160062E08C /* thirdView.swift */,
 				01FE41F12226257A0062E08C /* fourthView.swift */,
 				01B6CD382225DAFB00A71469 /* ViewController.swift */,
+				71CD935D2242C8BA002B4553 /* BeaconScanner.swift */,
+				71CD935F2242C8BA002B4553 /* DispatchTimer.swift */,
+				71CD935E2242C8BA002B4553 /* Eddystone.swift */,
 				71990A03224024F4007EBA4C /* beacons.json */,
 				01FE41ED222618FB0062E08C /* secondView.swift */,
+				71CD935B2242BEA1002B4553 /* scannerView.swift */,
 				01B6CD3A2225DAFB00A71469 /* Main.storyboard */,
 				01B6CD3D2225DAFC00A71469 /* Assets.xcassets */,
 				01B6CD3F2225DAFC00A71469 /* LaunchScreen.storyboard */,
@@ -216,11 +228,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CD935C2242BEA1002B4553 /* scannerView.swift in Sources */,
+				71CD93612242C8BA002B4553 /* Eddystone.swift in Sources */,
 				01FE41F0222621160062E08C /* thirdView.swift in Sources */,
 				712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */,
 				01B6CD392225DAFB00A71469 /* ViewController.swift in Sources */,
+				71CD93602242C8BA002B4553 /* BeaconScanner.swift in Sources */,
 				717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */,
 				01FE41EE222618FB0062E08C /* secondView.swift in Sources */,
+				71CD93622242C8BA002B4553 /* DispatchTimer.swift in Sources */,
 				01B6CD372225DAFB00A71469 /* AppDelegate.swift in Sources */,
 				01FE41F22226257A0062E08C /* fourthView.swift in Sources */,
 			);

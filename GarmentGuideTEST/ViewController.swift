@@ -20,10 +20,9 @@ class ViewController: UIViewController {
 
  
     @IBAction func bdg1(_ sender: UIButton) {
-          selectl.text = "EABA"
+        selectl.text = "EABA"
         self.performSegue(withIdentifier: "SegueView2", sender: self)
         print("EABA selected")
-        readFile()
     }
     
     @IBAction func bdg2(_ sender: UIButton) {

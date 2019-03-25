@@ -200,6 +200,9 @@
                                 <color key="backgroundColor" red="0.66666668650000005" green="0.35423035530000002" blue="0.39328057360000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <state key="normal" title="Girl's Restroom"/>
+                                <connections>
+                                    <segue destination="uJM-8l-uKG" kind="show" identifier="newscreen" id="EcQ-Z8-luF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD1-fV-7AG">
                                 <rect key="frame" x="58" y="247" width="259" height="63"/>
@@ -257,6 +260,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxW-kX-4yK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="932" y="133.5832083958021"/>
+        </scene>
+        <!--Scanner View-->
+        <scene sceneID="Jg8-XY-7it">
+            <objects>
+                <viewController id="uJM-8l-uKG" customClass="scannerView" customModule="GarmentGuideTEST" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dmj-tg-DeH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NqY-0V-leY">
+                                <rect key="frame" x="67" y="60" width="240" height="528"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uJM-8l-uKG" id="cgu-2w-GuJ"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9fe-D2-otv"/>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="NqY-0V-leY" id="eRA-aO-EDQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ocH-Bf-gz8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1684" y="139.880059970015"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GAc-bL-VgL">
@@ -339,7 +372,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mYs-Bm-cjt"/>
+        <segue reference="6Rf-sg-5Nm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

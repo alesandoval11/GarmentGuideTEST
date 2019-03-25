@@ -11,7 +11,7 @@ class secondView: UIViewController {
     
  
     @IBAction func backHome2(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "home2", sender: self)
+        self.performSegue(withIdentifier: "newscreen", sender: self)
     }
     
     override func viewDidLoad() {
