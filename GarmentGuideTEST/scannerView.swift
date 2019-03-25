@@ -11,7 +11,7 @@ import UIKit
 
 class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate {
     
-    @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var textField: UITextField!
     var beaconScanner: BeaconScanner!
     @IBAction override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +24,23 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
     }
     
     func didFindBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-        textField.text += "FIND: " + beaconInfo.description + "\n"
+        DispatchQueue.main.async {
+        self.textField.text?.append("FIND: " + beaconInfo.description + "\n\n")
+        }
     }
     func didLoseBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-        textField.text += "LOST: " + beaconInfo.description + "\n"
+        DispatchQueue.main.async {
+            self.textField.text?.append("LOST: " + beaconInfo.description + "\n\n")
+        }
     }
     func didUpdateBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-        textField.text += "UPDATE: " + beaconInfo.description + "\n"
+        DispatchQueue.main.async {
+            self.textField.text?.append("UPDATE: " + beaconInfo.description + "\n\n")
+        }
     }
     func didObserveURLBeacon(beaconScanner: BeaconScanner, URL: NSURL, RSSI: Int) {
-        textField.text += "RSSI: " + String(RSSI) + "\n"
+        DispatchQueue.main.async {
+            //self.textField.text?.append("RSSI: " + String(RSSI) + "\n\n")
+        }
     }
 }
