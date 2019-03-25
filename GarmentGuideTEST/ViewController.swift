@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         selectl.text = "EABB"
         self.performSegue(withIdentifier: "SegueView3", sender: self)
         print("EABB selected")
+        readJSON(fileName: "test2", fileType:"json")
     }
 
     @IBAction func bdg3(_ sender: UIButton) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Node: Decodable {
+class Node {
     let id: Int
     let coordinates: [Int]
     let connections: [Connection]
@@ -22,7 +22,7 @@ class Node: Decodable {
     }
 }
 
-class Connection: Decodable {
+class Connection {
     let to: Node
     let weight: Int
     
