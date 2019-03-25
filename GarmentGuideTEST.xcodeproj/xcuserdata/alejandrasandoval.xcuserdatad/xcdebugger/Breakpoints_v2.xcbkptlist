@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GarmentGuideTEST/secondView.swift"
+            timestampString = "575135197.039946"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "secondView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GarmentGuideTEST.secondView.username.getter : Swift.String"
+                  moduleName = "GarmentGuideTEST"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alejandrasandoval/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/secondView.swift"
+                  timestampString = "575135161.998597"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "123">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GarmentGuideTEST.secondView.username.setter : Swift.String"
+                  moduleName = "GarmentGuideTEST"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alejandrasandoval/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/secondView.swift"
+                  timestampString = "575135162.000602"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "137">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GarmentGuideTEST.secondView.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GarmentGuideTEST.secondView"
+                  moduleName = "GarmentGuideTEST"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alejandrasandoval/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/secondView.swift"
+                  timestampString = "575135162.00267"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "62">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GarmentGuideTEST.secondView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GarmentGuideTEST.secondView&gt;"
+                  moduleName = "GarmentGuideTEST"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alejandrasandoval/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/secondView.swift"
+                  timestampString = "575135162.0050859"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "53">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GarmentGuideTEST/ViewController.swift"
+            timestampString = "575135197.040374"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

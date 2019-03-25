@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010C27FD224296C300F670A3 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 010C27FC224296C300F670A3 /* test.json */; };
 		01B6CD372225DAFB00A71469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B6CD362225DAFB00A71469 /* AppDelegate.swift */; };
 		01B6CD392225DAFB00A71469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B6CD382225DAFB00A71469 /* ViewController.swift */; };
 		01B6CD3C2225DAFB00A71469 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01B6CD3A2225DAFB00A71469 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010C27FC224296C300F670A3 /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		01B6CD332225DAFB00A71469 /* GarmentGuideTEST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarmentGuideTEST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B6CD362225DAFB00A71469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01B6CD382225DAFB00A71469 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				01B6CD3D2225DAFC00A71469 /* Assets.xcassets */,
 				01B6CD3F2225DAFC00A71469 /* LaunchScreen.storyboard */,
 				01B6CD422225DAFC00A71469 /* Info.plist */,
+				010C27FC224296C300F670A3 /* test.json */,
 			);
 			path = GarmentGuideTEST;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01B6CD412225DAFC00A71469 /* LaunchScreen.storyboard in Resources */,
+				010C27FD224296C300F670A3 /* test.json in Resources */,
 				01B6CD3E2225DAFC00A71469 /* Assets.xcassets in Resources */,
 				01B6CD3C2225DAFB00A71469 /* Main.storyboard in Resources */,
 			);
@@ -373,7 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T5VVU32XSN;
 				INFOPLIST_FILE = GarmentGuideTEST/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -391,7 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T5VVU32XSN;
 				INFOPLIST_FILE = GarmentGuideTEST/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -410,6 +414,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GarmentGuideTESTTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -430,6 +435,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GarmentGuideTESTTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

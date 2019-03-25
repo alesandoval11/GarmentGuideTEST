@@ -91,6 +91,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="EABA" destination="3ru-VL-SJg" id="WJX-f2-Z66"/>
+                        <outlet property="EABB" destination="C5k-UF-B7V" id="ueJ-AC-2kQ"/>
+                        <outlet property="EABC" destination="A3n-w8-Nc1" id="l82-Wh-BVs"/>
+                        <outlet property="SelectBuildingLabel" destination="IC6-fx-T4u" id="Khy-Uk-mZL"/>
                         <outlet property="selectl" destination="Ftp-Fe-5tL" id="fZQ-d4-jor"/>
                         <segue destination="xQc-MQ-lw9" kind="showDetail" identifier="SegueView2" id="ioh-HG-gf4"/>
                         <segue destination="5zU-BS-kFU" kind="showDetail" identifier="SegueView3" id="IT9-Eo-ElP"/>
@@ -200,6 +204,9 @@
                                 <color key="backgroundColor" red="0.66666668650000005" green="0.35423035530000002" blue="0.39328057360000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <state key="normal" title="Girl's Restroom"/>
+                                <connections>
+                                    <action selector="firstButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="2Ap-FH-TPe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD1-fV-7AG">
                                 <rect key="frame" x="58" y="247" width="259" height="63"/>
@@ -207,6 +214,9 @@
                                 <color key="backgroundColor" red="0.1731843002" green="0.64468677279999997" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <state key="normal" title="Boy's Restroom"/>
+                                <connections>
+                                    <action selector="secondButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="CFO-aa-kyk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSv-4g-xXm">
                                 <rect key="frame" x="58" y="335" width="259" height="63"/>
@@ -214,6 +224,9 @@
                                 <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <state key="normal" title="Room 118"/>
+                                <connections>
+                                    <action selector="thirdButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="iMB-TL-JYB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIC-MZ-26P">
                                 <rect key="frame" x="58" y="426" width="259" height="63"/>
@@ -221,6 +234,9 @@
                                 <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <state key="normal" title="Room 108"/>
+                                <connections>
+                                    <action selector="fourthButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="hAK-Wq-M0Z"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgy-VA-LwK">
                                 <rect key="frame" x="58" y="509" width="259" height="63"/>
@@ -228,6 +244,9 @@
                                 <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <state key="normal" title="Room 128"/>
+                                <connections>
+                                    <action selector="fifthButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="REN-QV-x8V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52M-qq-vGL">
                                 <rect key="frame" x="93" y="611" width="180" height="45"/>
@@ -251,6 +270,11 @@
                         <viewLayoutGuide key="safeArea" id="cb0-xU-B94"/>
                     </view>
                     <connections>
+                        <outlet property="fifthLabel" destination="dgy-VA-LwK" id="50k-lC-HM9"/>
+                        <outlet property="firstLabel" destination="Naq-td-HaM" id="QXp-lt-dHP"/>
+                        <outlet property="fourthLabel" destination="tIC-MZ-26P" id="Wid-kJ-OdB"/>
+                        <outlet property="secondLabel" destination="YD1-fV-7AG" id="MVo-vA-Ulr"/>
+                        <outlet property="thirdLabel" destination="hSv-4g-xXm" id="QXd-DS-tFf"/>
                         <segue destination="BYZ-38-t0r" kind="showDetail" identifier="home2" id="6Rf-sg-5Nm"/>
                     </connections>
                 </viewController>
@@ -339,7 +363,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mYs-Bm-cjt"/>
+        <segue reference="6Rf-sg-5Nm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

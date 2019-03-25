@@ -1,0 +1,48 @@
+
+{
+    "eaba":[
+        {
+            "name": "Test Beacon 1",
+            "label": "Girl's Restroom//",
+            "type": "location",
+            "coordinates": [1,0],
+            "connections": [5,6]
+        },
+        {
+            "name": "Test Beacon 2",
+            "label": "Girl's Restroom",
+            "type": "location",
+            "coordinates": [2,0],
+            "connections": [5,6]
+        },
+        {
+            "name": "Test Beacon 3",
+            "label": "Girl's Restroom",
+            "type": "location",
+            "coordinates": [3,0],
+            "connections": [5,6]
+        },
+        {
+            "name": "Test Beacon 4",
+            "label": "Girl's Restroom//",
+            "type": "location",
+            "coordinates": [1,0],
+            "connections": [5,6]
+        },
+        {
+            "name": "Test Beacon 5",
+            "label": "Girl's Restroom//",
+            "type": "location",
+            "coordinates": [1,0],
+            "connections": [5,6]
+        },
+        {
+            "name": "Test Beacon 6",
+            "label": "Girl's Restroom//",
+            "type": "location",
+            "coordinates": [1,0],
+            "connections": [5,6]
+        }
+    ]
+}
+
