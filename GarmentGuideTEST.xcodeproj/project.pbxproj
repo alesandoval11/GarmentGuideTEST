@@ -55,9 +55,9 @@
 		7164ED6522494B9800AD4165 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		717AB2FD222DA6A500516EB8 /* PathFinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinding.swift; sourceTree = "<group>"; };
 		71CD935B2242BEA1002B4553 /* scannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scannerView.swift; sourceTree = "<group>"; };
-		71CD935D2242C8BA002B4553 /* BeaconScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BeaconScanner.swift; path = /Users/Ray/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/BeaconScanner.swift; sourceTree = "<absolute>"; };
-		71CD935E2242C8BA002B4553 /* Eddystone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Eddystone.swift; path = /Users/Ray/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/Eddystone.swift; sourceTree = "<absolute>"; };
-		71CD935F2242C8BA002B4553 /* DispatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DispatchTimer.swift; path = /Users/Ray/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/DispatchTimer.swift; sourceTree = "<absolute>"; };
+		71CD935D2242C8BA002B4553 /* BeaconScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconScanner.swift; sourceTree = "<group>"; };
+		71CD935E2242C8BA002B4553 /* Eddystone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eddystone.swift; sourceTree = "<group>"; };
+		71CD935F2242C8BA002B4553 /* DispatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
