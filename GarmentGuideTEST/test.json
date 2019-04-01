@@ -2,42 +2,42 @@
 {
     "eaba":[
         {
-            "name": "BRIAN**",
+            "name": "Girl's Restroom",
             "label": "Girl's Restroom//",
             "type": "location",
             "coordinates": [1,0],
             "connections": [5,6]
         },
         {
-            "name": "Test Beacon 2",
+            "name": "Boy's Restroom",
             "label": "Girl's Restroom",
             "type": "location",
             "coordinates": [2,0],
             "connections": [5,6]
         },
         {
-            "name": "Test Beacon 3",
+            "name": "Room Test 1",
             "label": "Girl's Restroom",
             "type": "location",
             "coordinates": [3,0],
             "connections": [5,6]
         },
         {
-            "name": "Test Beacon 4",
+            "name": "Room Test 2",
             "label": "Girl's Restroom//",
             "type": "location",
             "coordinates": [1,0],
             "connections": [5,6]
         },
         {
-            "name": "Test Beacon 5",
+            "name": "Room Test 3",
             "label": "Girl's Restroom//",
             "type": "location",
             "coordinates": [1,0],
             "connections": [5,6]
         },
         {
-            "name": "Test Beacon 6",
+            "name": "Room Test 4",
             "label": "Girl's Restroom//",
             "type": "location",
             "coordinates": [1,0],
