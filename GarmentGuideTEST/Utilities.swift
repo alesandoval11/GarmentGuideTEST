@@ -15,12 +15,18 @@ func readJSON(fileName: String, fileType: String){
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-            if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let EABA = jsonResult["EABA"] as? [Any] {
-                // do stuff
-                for beaconName in EABA as! [Dictionary<String, AnyObject>] { // or [[String:AnyObject]]
-                    let label = beaconName["label"] as! String
-                    // do something with personName and personID
-                    print(label);
+            if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let building = jsonResult["EABA"] as? [Any] {
+                for node in building as! [Dictionary<String, AnyObject>] { // or [[String:AnyObject]]
+                    let id = node["id"] as! Int
+                    let label = node["label"] as! String
+                    let type = node["type"] as! String
+                    let coordinates = node["coordinates"] as! NSArray
+                    let connections = node["connections"] as! NSArray
+                    print(id)
+                    print(label)
+                    print(type)
+                    print(coordinates)
+                    print(connections)
                 }
             }
         } catch {

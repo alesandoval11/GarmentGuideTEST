@@ -1,23 +1,23 @@
 {
     "EABA":[
         {
-            "id": 012345,
+            "id": 10,
             "label": "Girl's Restroom",
             "type": "location",
             "coordinates": [0,0],
             "connections": [5,6]
         },
         {
-            "id": 98765,
+            "id": 11,
             "label": "0",
-            "type": "joint",
+            "type": "waypoint",
             "coordinates": [1,1],
             "connections": [5,6]
         },
         {
-            "id": 20908,
+            "id": 22,
             "label": "1",
-            "type": "joint",
+            "type": "waypoint",
             "coordinates": [2,2],
             "connections": [5,6]
         },
