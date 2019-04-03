@@ -19,16 +19,19 @@ class Node {
         self.neighbors = []
     }
 }
-
+ var nodeDict: [[Int]: Node] = [:]  //Holds all the nodes.
 /**
+ --------------------------------
+ Fix: Make Dictionary Global
+ --------------------------------
  Generates nodes from a JSON file
  - Parameters:
     fileName: The name of the file
     fileType: The type of file
  - Returns: Dictionary of Nodes
  */
-func createNodes(fileName: String, fileType: String)->[[Int]:Node]{
-    var nodeDict: [[Int]: Node] = [:]  //Holds all the nodes.
+func createNodes(fileName: String, fileType: String){
+   
     if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -52,10 +55,9 @@ func createNodes(fileName: String, fileType: String)->[[Int]:Node]{
             print("Error")
         }
     }
-     return nodeDict
 }
 
-func AStar(nodeDict: [[Int]: Node], start: [Int], end:[Int]) {
+func AStar(start: [Int], end:[Int]) {
     if (nodeDict[start] != nil) {            //If user is located at existing node
         //A star
     }

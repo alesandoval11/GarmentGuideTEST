@@ -30,6 +30,7 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
             for b in availableBeacons{
                 self.textField.text?.append(b.name + "\t" + String(b.RSSI) + " dB\n\tMean:\n\t")
                 self.textField.text?.append(String(b.meanRSSI) + " dB\n\tStd Dev:\n\t" + String(b.stdRSSI) + " dB\n")
+                self.textField.text?.append(String(b.distance) + " m\n")
             }
         }
     }
@@ -74,6 +75,7 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                         }
                         availableBeacons[i].meanRSSI = sum/k
                         availableBeacons[i].recRSSI.removeAll()
+                        availableBeacons[i].distance = pow(10,Double((RSSIm - availableBeacons[i].meanRSSI))/Double((10*pathLoss)))
                     }
                     availableBeacons[i].recRSSI.append(beaconInfo.RSSI)
                 }
@@ -91,6 +93,8 @@ var beaconNames =   ["f7826da6bc5b71e0893e716e687a6a41": "Beacon1",
 
 var availableBeacons = [ParsedBeacon]()
 let recRSSIsize = 10
+let pathLoss = 2.5
+let RSSIm = -59         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 
 class ParsedBeacon {
     let name: String
@@ -99,6 +103,7 @@ class ParsedBeacon {
     var recRSSI = [Int]()
     var meanRSSI: Int
     var stdRSSI: Double
+    var distance: Double
     
     init (bInfo: BeaconInfo){
         self.id = bInfo.beaconID.description
@@ -118,5 +123,6 @@ class ParsedBeacon {
         }
         self.meanRSSI = 0
         self.stdRSSI = 0
+        self.distance = -1
     }
 }
