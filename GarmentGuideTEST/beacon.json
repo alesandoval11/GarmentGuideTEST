@@ -1,39 +1,34 @@
 {
     "EABA":[
         {
-            "id": 0,
             "label": "Girl's Restroom",
             "type": "location",
             "coordinates": [0,0],
             "connections": [[1,1]]
         },
         {
-            "id": 1,
             "label": "w1",
             "type": "waypoint",
             "coordinates": [1,1],
             "connections": [[0,0]]
         },
         {
-            "id": 2,
             "label": "w2",
             "type": "waypoint",
             "coordinates": [2,2],
-            "connections": [[3,3],[4,4]]
+            "connections": [[3,3]]
         },
         {
-            "id": 3,
             "label": "w3",
             "type": "waypoint",
             "coordinates": [3,3],
             "connections": [[2,2],[4,4]]
         },
         {
-            "id": 4,
             "label": "w4",
             "type": "waypoint",
             "coordinates": [4,4],
-            "connections": [[2,2],[3,3]]
+            "connections": [[3,3]]
         }
     ]
 }

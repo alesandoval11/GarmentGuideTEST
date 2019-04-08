@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "SegueView3", sender: self)
         print("EABB selected")
         createNodes(fileName: "beacon", fileType:"json")
+        findPath(start: [2,2], end: [4,4])
     }
 
     @IBAction func bdg3(_ sender: UIButton) {

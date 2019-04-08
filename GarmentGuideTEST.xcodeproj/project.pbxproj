@@ -19,6 +19,7 @@
 		712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A2FE3222DB70300880A58 /* Trilateration.swift */; };
 		715BFB7922541D9C00A400F0 /* beacon.json in Resources */ = {isa = PBXBuildFile; fileRef = 715BFB7822541D9C00A400F0 /* beacon.json */; };
 		717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717AB2FD222DA6A500516EB8 /* PathFinding.swift */; };
+		71C8F4F422569473009D7B7A /* SwiftPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C8F4F322569473009D7B7A /* SwiftPriorityQueue.swift */; };
 		71CD935C2242BEA1002B4553 /* scannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD935B2242BEA1002B4553 /* scannerView.swift */; };
 		71CD93602242C8BA002B4553 /* BeaconScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD935D2242C8BA002B4553 /* BeaconScanner.swift */; };
 		71CD93612242C8BA002B4553 /* Eddystone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CD935E2242C8BA002B4553 /* Eddystone.swift */; };
@@ -52,6 +53,7 @@
 		712A2FE3222DB70300880A58 /* Trilateration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trilateration.swift; sourceTree = "<group>"; };
 		715BFB7822541D9C00A400F0 /* beacon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beacon.json; sourceTree = "<group>"; };
 		717AB2FD222DA6A500516EB8 /* PathFinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathFinding.swift; sourceTree = "<group>"; };
+		71C8F4F322569473009D7B7A /* SwiftPriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPriorityQueue.swift; sourceTree = "<group>"; };
 		71CD935B2242BEA1002B4553 /* scannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scannerView.swift; sourceTree = "<group>"; };
 		71CD935D2242C8BA002B4553 /* BeaconScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconScanner.swift; sourceTree = "<group>"; };
 		71CD935E2242C8BA002B4553 /* Eddystone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eddystone.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		01B6CD352225DAFB00A71469 /* GarmentGuideTEST */ = {
 			isa = PBXGroup;
 			children = (
+				71C8F4F322569473009D7B7A /* SwiftPriorityQueue.swift */,
 				715BFB7822541D9C00A400F0 /* beacon.json */,
 				712A2FE3222DB70300880A58 /* Trilateration.swift */,
 				01B6CD362225DAFB00A71469 /* AppDelegate.swift */,
@@ -231,6 +234,7 @@
 				71CD935C2242BEA1002B4553 /* scannerView.swift in Sources */,
 				71CD93612242C8BA002B4553 /* Eddystone.swift in Sources */,
 				01FE41F0222621160062E08C /* thirdView.swift in Sources */,
+				71C8F4F422569473009D7B7A /* SwiftPriorityQueue.swift in Sources */,
 				712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */,
 				01B6CD392225DAFB00A71469 /* ViewController.swift in Sources */,
 				71CD93602242C8BA002B4553 /* BeaconScanner.swift in Sources */,
