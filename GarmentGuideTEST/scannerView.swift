@@ -51,33 +51,37 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
         printTable()
     }
     func didUpdateBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-        if beaconInfo.RSSI != 127 {
-            for i in 0...(availableBeacons.count - 1) {
-                if availableBeacons[i].id == beaconInfo.beaconID.description {
-                    availableBeacons[i].RSSI = beaconInfo.RSSI
-                    if availableBeacons[i].recRSSI.count == recRSSIsize {
-                        var sum =  availableBeacons[i].recRSSI.reduce(0,+)
-                        var sumStd = 0
-                        availableBeacons[i].meanRSSI = sum/recRSSIsize
-                        for j in 0...(recRSSIsize - 1) {
-                            sumStd += Int(pow((Double(availableBeacons[i].recRSSI[j] - availableBeacons[i].meanRSSI)), 2))
-                        }
-                        sumStd /= (recRSSIsize - 1)
-                        availableBeacons[i].stdRSSI = sqrt(Double(sumStd))
-                        
-                        sum = 0
-                        var k = 0
-                        for j in 0...(recRSSIsize - 1) {
-                            if (availableBeacons[i].recRSSI[j] < availableBeacons[i].meanRSSI + 2 * Int(availableBeacons[i].stdRSSI)) || (availableBeacons[i].recRSSI[j] > availableBeacons[i].meanRSSI - 2 * Int(availableBeacons[i].stdRSSI)) {
-                                sum += availableBeacons[i].recRSSI[j]
-                                k += 1
+        DispatchQueue.main.async {
+            if beaconInfo.RSSI != 127 {
+                for i in 0...(availableBeacons.count - 1) {
+                    if availableBeacons[i].id == beaconInfo.beaconID.description {
+                        availableBeacons[i].RSSI = beaconInfo.RSSI
+                        if availableBeacons[i].recRSSI.count == recRSSIsize {
+                            var sum =  availableBeacons[i].recRSSI.reduce(0,+)
+                            var sumStd = 0
+                            availableBeacons[i].meanRSSI = sum/recRSSIsize
+                            for j in 0...(recRSSIsize - 1) {
+                                sumStd += Int(pow((Double(availableBeacons[i].recRSSI[j] - availableBeacons[i].meanRSSI)), 2))
+                            }
+                            sumStd /= (recRSSIsize - 1)
+                            availableBeacons[i].stdRSSI = sqrt(Double(sumStd))
+                            
+                            sum = 0
+                            var k = 0
+                            for j in 0...(recRSSIsize - 1) {
+                                if (availableBeacons[i].recRSSI[j] < availableBeacons[i].meanRSSI + 2 * Int(availableBeacons[i].stdRSSI)) || (availableBeacons[i].recRSSI[j] > availableBeacons[i].meanRSSI - 2 * Int(availableBeacons[i].stdRSSI)) {
+                                    sum += availableBeacons[i].recRSSI[j]
+                                    k += 1
+                                }
+                            }
+                            if k != 0 {
+                                availableBeacons[i].meanRSSI = sum/k
+                                availableBeacons[i].recRSSI.removeAll()
+                                availableBeacons[i].distance = pow(10,Double((RSSIm - availableBeacons[i].meanRSSI))/Double((10*pathLoss)))
                             }
                         }
-                        availableBeacons[i].meanRSSI = sum/k
-                        availableBeacons[i].recRSSI.removeAll()
-                        availableBeacons[i].distance = pow(10,Double((RSSIm - availableBeacons[i].meanRSSI))/Double((10*pathLoss)))
+                        availableBeacons[i].recRSSI.append(beaconInfo.RSSI)
                     }
-                    availableBeacons[i].recRSSI.append(beaconInfo.RSSI)
                 }
             }
         }
@@ -86,15 +90,15 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
     func didObserveURLBeacon(beaconScanner: BeaconScanner, URL: NSURL, RSSI: Int) {}
 }
 
-var beaconNames =   ["f7826da6bc5b71e0893e716e687a6a41": "Beacon1",
-                     "f7826da6bc5b71e0893e6d5271344342": "Beacon2",
-                     "f7826da6bc5b71e0893e4159776a586c": "Beacon3",
-                     "f7826da6bc5b71e0893e37796e48706b": "Beacon4"]
+var beaconNames =   ["f7826da6bc5b71e0893e716e687a6a41": "Beacon1", //kt5lbu | -47
+                     "f7826da6bc5b71e0893e6d5271344342": "Beacon2", //ktirna | -49
+                     "f7826da6bc5b71e0893e4159776a586c": "Beacon3", //ktt3md | -52
+                     "f7826da6bc5b71e0893e37796e48706b": "Beacon4"] //ktdqmh | -52
 
 var availableBeacons = [ParsedBeacon]()
 let recRSSIsize = 10
-let pathLoss = 2.5
-let RSSIm = -59         //Transmission Power: 3:-77 | 6:-69 | 7:-59
+let pathLoss = 2
+let RSSIm = -50         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 
 class ParsedBeacon {
     let name: String

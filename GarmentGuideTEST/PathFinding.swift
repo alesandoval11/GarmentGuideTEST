@@ -42,18 +42,17 @@ extension Node: Comparable {
     static func < (lhs: Node, rhs: Node) -> Bool {
         return lhs.cost < rhs.cost
     }
-    
-    /*static func <= (lhs: Node, rhs: Node) -> Bool {
-        return lhs.cost < rhs.cost
+}
+
+struct Zone {
+    let id: Int
+    let extents: (xMin: Int, yMin: Int, xMax: Int, yMax: Int)
+    let nodes: [Node]
+    init(id: Int, extents: (Int, Int, Int, Int), nodes: [Node]) {
+        self.id = id
+        self.extents = extents
+        self.nodes = nodes
     }
-    
-    static func > (lhs: Node, rhs: Node) -> Bool {
-        return rhs.cost > lhs.cost
-    }
-    
-    static func >= (lhs: Node, rhs: Node) -> Bool {
-        return rhs.cost < lhs.cost
-    }*/
 }
 
  var nodeDict: [[Int]: Node] = [:]  //Holds all the nodes.
@@ -93,16 +92,44 @@ func createNodes(fileName: String, fileType: String){
     }
 }
 
+var zoneDict: [Int: Zone] = [:]  //Holds all the zones
+
+func createZones(fileName: String, fileType: String){
+    
+    if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+            if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let building = jsonResult["EABA"] as? [Any] {
+                for zone in building as! [[String: AnyObject]] {
+                    let id = zone["id"] as! Int
+                    let extents = zone["extents"] as! (Int, Int, Int, Int)
+                    let nodes = zone["nodes"] as! [Int]
+                    /*******************
+                     Convert list of ints to nodes
+                     *******************/
+                    //zoneDict.updateValue(Zone(id: id, extents: extents, nodes: nodes), forKey: id)
+                }
+                //dump(nodeDict)
+            }
+        } catch {
+            // handle error
+            print("Error")
+        }
+    }
+}
+
+//Euclidean distance squared (No need for sqrt as we don't need actual distance)
 func heuristic(start: [Int], end: [Int]) -> Int{
-    return abs(start[1] - end[1]) + abs(start[0] - end[0])
+    return Int(pow(Double(start[1] - end[1]),2) + pow(Double(start[0] - end[0]),2))
 }
 
 //Backtracking function
 func getPath(end: Node) -> [Node] {
-    var path: [Node] = []
+    var path: [Node] = []       //Path stored in reverse order
     var currentNode = end
     while (currentNode.parent != nil) {
-        path.append(currentNode)            //Might return in reverse order
+        path.append(currentNode)
         currentNode = currentNode.parent!
     }
     path.append(currentNode)
@@ -151,7 +178,7 @@ func aStar(start: [Int], end:[Int]) -> [Node] {
 }
 
 func printNodes(path: [Node]) {
-    for node in path {
+    for node in path.reversed() {
         print(node.coordinates)
     }
 }
