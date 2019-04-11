@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "SegueView3", sender: self)
         print("EABB selected")
         createNodes(fileName: "beacon", fileType:"json")
-        createZones(fileName: "zone", fileType:"json")
+        //createZones(fileName: "zone", fileType:"json")
         findPath(start: [2,5], end: [7,8])
     }
 

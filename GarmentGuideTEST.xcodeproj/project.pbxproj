@@ -59,7 +59,7 @@
 		71CD935D2242C8BA002B4553 /* BeaconScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconScanner.swift; sourceTree = "<group>"; };
 		71CD935E2242C8BA002B4553 /* Eddystone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eddystone.swift; sourceTree = "<group>"; };
 		71CD935F2242C8BA002B4553 /* DispatchTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchTimer.swift; sourceTree = "<group>"; };
-		71D280FF225BC95400F30708 /* zone.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = zone.json; sourceTree = "<group>"; };
+		71D280FF225BC95400F30708 /* zone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zone.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

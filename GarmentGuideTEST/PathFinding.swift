@@ -92,10 +92,11 @@ func createNodes(fileName: String, fileType: String){
     }
 }
 
-var zoneDict: [Int: Zone] = [:]  //Holds all the zones
-
+var zoneList: [Zone] = []  //Holds all the zones
+/*******************
+ Fix! Not reading in zones
+ *******************/
 func createZones(fileName: String, fileType: String){
-    
     if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -104,19 +105,28 @@ func createZones(fileName: String, fileType: String){
                 for zone in building as! [[String: AnyObject]] {
                     let id = zone["id"] as! Int
                     let extents = zone["extents"] as! (Int, Int, Int, Int)
-                    let nodes = zone["nodes"] as! [Int]
-                    /*******************
-                     Convert list of ints to nodes
-                     *******************/
-                    //zoneDict.updateValue(Zone(id: id, extents: extents, nodes: nodes), forKey: id)
+                    let nodeCoord = zone["nodes"] as! [[Int]]
+                    var nodes: [Node] = []
+                    for coord in nodeCoord {
+                        nodes.append(nodeDict[coord]!)
+                    }
+                    //zoneList.append(Zone(id: id, extents: extents, nodes: nodes), forKey: id)
                 }
-                //dump(nodeDict)
+                //sorts zone list by xmin. increasing order
+                zoneList.sort(by: {$0.extents.2 < $1.extents.2})
+                //dump(zoneDict)
             }
         } catch {
             // handle error
             print("Error")
         }
     }
+}
+
+
+//Binary search
+func binarySearch(sortedzones: [Zone], location: [Int]) {
+    var mid = sortedzones.count / 2
 }
 
 //Euclidean distance squared (No need for sqrt as we don't need actual distance)
