@@ -29,9 +29,9 @@ class ViewController: UIViewController {
         selectl.text = "EABB"
         self.performSegue(withIdentifier: "SegueView3", sender: self)
         print("EABB selected")
-        createNodes(fileName: "beacon", fileType:"json")
-        //createZones(fileName: "zone", fileType:"json")
-        findPath(start: [2,5], end: [7,8])
+        createNodes(fileName: "beacon1", fileType:"json")
+        createZones(fileName:"zone", fileType:"json")
+        findPath(start: [5,5], end: [3,9])
     }
 
     @IBAction func bdg3(_ sender: UIButton) {

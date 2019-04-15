@@ -44,18 +44,19 @@ extension Node: Comparable {
     }
 }
 
-struct Zone {
+class Zone {
     let id: Int
-    let extents: (xMin: Int, yMin: Int, xMax: Int, yMax: Int)
+    let extents: [Int]              //Should most probably be a tuple.
     let nodes: [Node]
-    init(id: Int, extents: (Int, Int, Int, Int), nodes: [Node]) {
+    init(id: Int, extents: [Int], nodes: [Node]) {
         self.id = id
         self.extents = extents
         self.nodes = nodes
     }
 }
 
- var nodeDict: [[Int]: Node] = [:]  //Holds all the nodes.
+var nodeDict: [[Int]: Node] = [:]  //Holds all the nodes.
+var zoneList: [Zone] = []
 /**
  --------------------------------
  Fix: Make Dictionary Global
@@ -92,29 +93,25 @@ func createNodes(fileName: String, fileType: String){
     }
 }
 
-var zoneList: [Zone] = []  //Holds all the zones
-/*******************
- Fix! Not reading in zones
- *******************/
 func createZones(fileName: String, fileType: String){
+    
     if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
             if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let building = jsonResult["EABA"] as? [Any] {
+                zoneList.removeAll()
                 for zone in building as! [[String: AnyObject]] {
                     let id = zone["id"] as! Int
-                    let extents = zone["extents"] as! (Int, Int, Int, Int)
-                    let nodeCoord = zone["nodes"] as! [[Int]]
+                    let extents = zone["extents"] as! [Int]
+                    let zoneCoord = zone["nodes"] as! [[Int]]
                     var nodes: [Node] = []
-                    for coord in nodeCoord {
+                    for coord in zoneCoord {
                         nodes.append(nodeDict[coord]!)
                     }
-                    //zoneList.append(Zone(id: id, extents: extents, nodes: nodes), forKey: id)
+                    zoneList.append(Zone(id:id, extents:extents, nodes:nodes))
                 }
-                //sorts zone list by xmin. increasing order
-                zoneList.sort(by: {$0.extents.2 < $1.extents.2})
-                //dump(zoneDict)
+                zoneList.sort(by: {$0.extents[0]+$0.extents[2] < $1.extents[0]+$1.extents[2]})      //sort by xmin + xmax
             }
         } catch {
             // handle error
@@ -123,11 +120,89 @@ func createZones(fileName: String, fileType: String){
     }
 }
 
-
 //Binary search
-func binarySearch(sortedzones: [Zone], location: [Int]) {
-    var mid = sortedzones.count / 2
+//NEEDS TO BE WRITTEN BETTER
+//Returns index of first match
+func binarySearch(sortedzones: [Zone], location: [Int]) -> Int{
+    var l = 0
+    var r = sortedzones.count - 1
+    var m = 0
+    while(l <= r) {
+        m = (l + r) / 2
+        if (zoneList[m].extents[0] + zoneList[m].extents[2]  < location[0]) {
+            l = m + 1
+            if (l == sortedzones.count && location[0] <= zoneList[m].extents[0]) {
+                return m
+            }
+        }
+        else if (zoneList[m].extents[0] + zoneList[m].extents[2]  > location[0]) {
+            r = m - 1
+            if (r == -1 && location[0] >= zoneList[m].extents[0]) {
+                return m
+            }
+        }
+        else {
+            return m
+        }
+    }
+    return m
 }
+
+//Gets range of zones in suitable area
+func zoneRange(sortedzones: [Zone], index: Int) ->[Zone]{
+    let value = sortedzones[index].extents[0] + sortedzones[index].extents[2]
+    var countLower = 0
+    var countUpper = 0
+    var range: [Int] = []
+    
+    //Upper
+    if(index != sortedzones.count-1) {
+        for i in index...sortedzones.count-1 {
+            if(sortedzones[i].extents[0] + sortedzones[i].extents[2] == value) {
+                countUpper += 1
+            }
+            else {
+                break
+            }
+        }
+    }
+    
+    if(index != 0) {
+    //Lower
+        for i in (0...index-1).reversed() {
+            if(sortedzones[i].extents[0] + sortedzones[i].extents[2] == value) {
+                countLower += 1
+            }
+            else {
+                break
+            }
+        }
+    }
+    if (countUpper > 0 && countLower > 0) {
+        range = [index-countLower,index+countUpper]
+    }
+    else if (countUpper > 0 && countLower == 0) {
+        range = [index,index+countUpper]
+    }
+    else if (countLower > 0 && countUpper == 0) {
+        range = [index-countLower,index]
+    }
+    else {
+        range = [index,index]
+    }
+    return Array(sortedzones[range[0]...range[1]])
+}
+
+//Given zones with same x val, find same y val
+func findZone(zoneRange:[Zone], coord: [Int]) -> Zone?{
+    for zone in zoneRange {
+        if (coord[0] >= zone.extents[0] && coord[0] <= zone.extents[0] + zone.extents[2] && coord[1] >= zone.extents[1] && coord[1] <= zone.extents[1] + zone.extents[3]) {
+            return zone
+        }
+    }
+    return nil
+}
+
 
 //Euclidean distance squared (No need for sqrt as we don't need actual distance)
 func heuristic(start: [Int], end: [Int]) -> Int{
@@ -200,6 +275,13 @@ func findPath(start: [Int], end:[Int]) {
     }
     else {
         //Zone guidance function
+        let index = binarySearch(sortedzones: zoneList, location: start)
+        let zoneArr: [Zone] = zoneRange(sortedzones: zoneList, index: index)
+        let zone = findZone(zoneRange: zoneArr, coord: start)
+        for coord in zone!.nodes {
+            print("----------------")
+            printNodes(path: aStar(start: coord.coordinates, end: end))
+        }
     }
 }
 

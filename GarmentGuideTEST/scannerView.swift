@@ -72,7 +72,7 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                             sum = 0
                             var k = 0
                             for j in 0...(recRSSIsize - 1) {
-                                if (availableBeacons[i].recRSSI[j] <= availableBeacons[i].meanRSSI + Int(1.5 * availableBeacons[i].stdRSSI)) && (availableBeacons[i].recRSSI[j] >= availableBeacons[i].meanRSSI - Int(1.5 * availableBeacons[i].stdRSSI)) {
+                                if (availableBeacons[i].recRSSI[j] <= availableBeacons[i].meanRSSI + Int(1 * availableBeacons[i].stdRSSI)) && (availableBeacons[i].recRSSI[j] >= availableBeacons[i].meanRSSI - Int(1 * availableBeacons[i].stdRSSI)) {
                                     sum += availableBeacons[i].recRSSI[j]
                                     k += 1
                                 }
@@ -129,7 +129,7 @@ var beaconNames =   [
 
 var availableBeacons = [ParsedBeacon]()
 let recRSSIsize = 20
-let pathLoss = 2.75     //2-3
+let pathLoss = 1.4 //Rise:2.75     //2-3
 let RSSIm = -48         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 
 class ParsedBeacon {
