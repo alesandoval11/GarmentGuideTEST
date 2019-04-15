@@ -16,6 +16,8 @@
 		01FE41EE222618FB0062E08C /* secondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41ED222618FB0062E08C /* secondView.swift */; };
 		01FE41F0222621160062E08C /* thirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41EF222621160062E08C /* thirdView.swift */; };
 		01FE41F22226257A0062E08C /* fourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41F12226257A0062E08C /* fourthView.swift */; };
+		710BBFCC226501A200724AE9 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710BBFCB226501A200724AE9 /* Zone.swift */; };
+		710BBFCE2265020000724AE9 /* SwiftPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710BBFCD2265020000724AE9 /* SwiftPriorityQueue.swift */; };
 		712604822263A6D70062F689 /* zone.json in Resources */ = {isa = PBXBuildFile; fileRef = 712604812263A6D70062F689 /* zone.json */; };
 		712604842263FC2F0062F689 /* beacon1.json in Resources */ = {isa = PBXBuildFile; fileRef = 712604832263FC2F0062F689 /* beacon1.json */; };
 		712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712A2FE3222DB70300880A58 /* Trilateration.swift */; };
@@ -51,6 +53,8 @@
 		01FE41ED222618FB0062E08C /* secondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondView.swift; sourceTree = "<group>"; };
 		01FE41EF222621160062E08C /* thirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdView.swift; sourceTree = "<group>"; };
 		01FE41F12226257A0062E08C /* fourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourthView.swift; sourceTree = "<group>"; };
+		710BBFCB226501A200724AE9 /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		710BBFCD2265020000724AE9 /* SwiftPriorityQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPriorityQueue.swift; sourceTree = "<group>"; };
 		712604812263A6D70062F689 /* zone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = zone.json; path = /Users/Ray/Desktop/CSCE483/GarmentGuideTEST/GarmentGuideTEST/zone.json; sourceTree = "<absolute>"; };
 		712604832263FC2F0062F689 /* beacon1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beacon1.json; sourceTree = "<group>"; };
 		712A2FE3222DB70300880A58 /* Trilateration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trilateration.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 		01B6CD352225DAFB00A71469 /* GarmentGuideTEST */ = {
 			isa = PBXGroup;
 			children = (
+				710BBFCB226501A200724AE9 /* Zone.swift */,
 				712604832263FC2F0062F689 /* beacon1.json */,
 				712604812263A6D70062F689 /* zone.json */,
 				715BFB7822541D9C00A400F0 /* beacon.json */,
@@ -119,6 +124,7 @@
 				01B6CD3F2225DAFC00A71469 /* LaunchScreen.storyboard */,
 				01B6CD422225DAFC00A71469 /* Info.plist */,
 				717AB2FD222DA6A500516EB8 /* PathFinding.swift */,
+				710BBFCD2265020000724AE9 /* SwiftPriorityQueue.swift */,
 			);
 			path = GarmentGuideTEST;
 			sourceTree = "<group>";
@@ -243,7 +249,9 @@
 				01FE41F0222621160062E08C /* thirdView.swift in Sources */,
 				712A2FE4222DB70300880A58 /* Trilateration.swift in Sources */,
 				01B6CD392225DAFB00A71469 /* ViewController.swift in Sources */,
+				710BBFCC226501A200724AE9 /* Zone.swift in Sources */,
 				71CD93602242C8BA002B4553 /* BeaconScanner.swift in Sources */,
+				710BBFCE2265020000724AE9 /* SwiftPriorityQueue.swift in Sources */,
 				717AB2FE222DA6A500516EB8 /* PathFinding.swift in Sources */,
 				01FE41EE222618FB0062E08C /* secondView.swift in Sources */,
 				71CD93622242C8BA002B4553 /* DispatchTimer.swift in Sources */,
