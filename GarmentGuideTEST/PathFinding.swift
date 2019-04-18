@@ -12,7 +12,6 @@ class Node {
     let coordinates: [Int]
     var parent: Node?
     var neighbors: [Node]
-    var g: Int
     var h: Int
     var cost: Int           //f(n) = g(n) + h(n)
     
@@ -20,8 +19,7 @@ class Node {
         self.coordinates = coordinates
         self.parent = nil
         self.neighbors = []
-        self.g = Int.max
-        self.h = Int.max
+        self.h = 0
         self.cost = 0
     }
     
@@ -45,6 +43,7 @@ extension Node: Comparable {
 }
 
 var nodeDict: [[Int]: Node] = [:]  //Holds all the nodes.
+var zoneNodes: [Node] = []          //Holds all nodes in chosen zone
 
 /**
  --------------------------------
@@ -94,44 +93,55 @@ func getPath(end: Node) -> [Node] {
     var currentNode = end
     while (currentNode.parent != nil) {
         path.append(currentNode)
+        //var temp = currentNode.parent!
         currentNode = currentNode.parent!
+        /*currentNode.parent = nil
+        currentNode.cost = 0
+        currentNode.h = 0
+        currentNode = temp*/
     }
     path.append(currentNode)
+    for node in visited {
+        node.cost = 0
+        node.h = 0
+        node.parent = nil
+    }
+    /*currentNode.parent = nil
+    currentNode.cost = 0
+    currentNode.h = 0*/
     return path
 }
 
-
+var visited: Set<Node> = []
 func aStar(start: [Int], end:[Int]) -> [Node] {
     var frontier: PriorityQueue<Node> = PriorityQueue<Node>(ascending: true)
-    var visited: Set<Node> = []
-    nodeDict[start]!.g = 0
+    //var visited: Set<Node> = []
+    visited = []
     nodeDict[start]!.h = heuristic(start: start, end: end)
     frontier.push(nodeDict[start]!)
     
     while !frontier.isEmpty {
         let currentNode = frontier.pop()
         visited.insert(currentNode!)
-        
+        for node in zoneNodes {
+            if (node == currentNode && (currentNode != nodeDict[start])) {      //Not optimal node
+                return [Node(coordinates: [-1,-1])]                             //Set as currentNode
+            }
+        }
         //Found Goal
         if (currentNode!.coordinates == end) {
             return getPath(end: currentNode!)
         }
         
+        
+        //If coord != [-1,-1]
         for neighbor in currentNode!.neighbors {
-            let newG = currentNode!.g + heuristic(start: currentNode!.coordinates, end: neighbor.coordinates)  //Cost from current to neighbor + current cost
+            let newCost = currentNode!.cost + heuristic(start: currentNode!.coordinates, end: neighbor.coordinates)  //Cost from current to neighbor + current cost
             
-            //If neighbor is in closed list
-            if (visited.contains(neighbor)) {
-                continue
-            }
-           
             //If neighbor is not in closed list OR has been in closed list and new cost is less
-            if (!visited.contains(neighbor) || neighbor.g > newG) {
-                if (neighbor.h == Int.max) {
-                    neighbor.h = heuristic(start: neighbor.coordinates, end: end)   //Cost from neighbor to goal.
-                }
-                neighbor.g = newG
-                neighbor.cost = neighbor.g + neighbor.h
+            if (!visited.contains(neighbor) || neighbor.cost > newCost) {
+                neighbor.h = heuristic(start: neighbor.coordinates, end: end)
+                neighbor.cost = newCost
                 neighbor.parent = currentNode
                 visited.insert(neighbor)
                 frontier.push(neighbor)
@@ -156,11 +166,10 @@ func findPath(start: [Int], end:[Int]) {
         //Zone guidance function
         //let index = binarySearch(sortedzones: zoneList, location: start)
         //let zoneArr: [Zone] = zoneRange(sortedzones: zoneList, index: index)
-        let zone = findZone(zoneRange: zoneList, coord: start)
+        let zone = findZone(zoneRange: zoneList, coord: start)      //Could be more than one zone
         for coord in zone!.nodes {
             print("----------------")
-            print(coord.coordinates)
-            //printNodes(path: aStar(start: coord.coordinates, end: end))
+            printNodes(path: aStar(start: coord.coordinates, end: end))
         }
     }
 }

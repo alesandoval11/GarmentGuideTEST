@@ -50,12 +50,17 @@ func createZones(fileName: String, fileType: String){
 }
 
 //Given zones with same x val, find same y val
+/*************************
+Find one zone, check its connected zones and return list of zones.
+**************************/
+//Future Improvement: Add Binary Search
 func findZone(zoneRange:[Zone], coord: [Int]) -> Zone?{
     for zone in zoneRange {
         if (coord[0] >= zone.extents[0] &&
             coord[0] <= (zone.extents[0] + zone.extents[2]) &&
             coord[1] >= zone.extents[1] &&
             coord[1] <= zone.extents[1] + zone.extents[3]) {
+            zoneNodes = zone.nodes
             return zone
         }
     }
