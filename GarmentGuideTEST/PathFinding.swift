@@ -8,24 +8,32 @@
 
 import Foundation
 
-class Node {
+class Node: NSCopying {
+    
     let coordinates: [Int]
-    var parent: Node?
+    var parent: Node? = nil
     var neighbors: [Node]
     var h: Int
-    var cost: Int           //f(n) = g(n) + h(n)
+    var g: Int
+    var f: Int           //f(n) = g(n) + h(n)
     
-    init(coordinates: [Int]) {
+    init(coordinates: [Int], parent: Node? = nil, neighbors: [Node] = [], h: Int = 0, g: Int = 0, f: Int = 0) {
         self.coordinates = coordinates
-        self.parent = nil
-        self.neighbors = []
-        self.h = 0
-        self.cost = 0
+        self.parent = parent
+        self.neighbors = neighbors
+        self.h = h
+        self.g = g
+        self.f = f
     }
     
+    //"Deep Copy" for comparing paths and keeping their values
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Node(coordinates: coordinates, parent: parent, neighbors: neighbors, h:h, g:g, f:f)
+        return copy
+    }
 }
 
-//Necessary for Hashable protocol which is used for sets
+//Used for sets
 extension Node: Hashable {
     static func ==(lhs: Node, rhs: Node) -> Bool {
         return lhs.coordinates == rhs.coordinates
@@ -36,25 +44,29 @@ extension Node: Hashable {
     }
 }
 
+//Used for priority Queue
 extension Node: Comparable {
     static func < (lhs: Node, rhs: Node) -> Bool {
-        return lhs.cost < rhs.cost
+        return lhs.f < rhs.f
     }
 }
 
-var nodeDict: [[Int]: Node] = [:]  //Holds all the nodes.
-var zoneNodes: [Node] = []          //Holds all nodes in chosen zone
+/*----------------------------------
+                Globals
+ -----------------------------------*/
+var nodeDict: [[Int]: Node] = [:]       //Holds all the nodes.
+var zoneNodes: Set<Node> = []           //Holds all nodes in chosen zone
+var visited: Set<Node> = []             //Visited nodes for a star
 
-/**
- --------------------------------
- Fix: Make Dictionary Global
- --------------------------------
+
+/*------------------------------------
  Generates nodes from a JSON file
  - Parameters:
     fileName: The name of the file
     fileType: The type of file
- - Returns: Dictionary of Nodes
- */
+ - Returns:
+    None
+ -------------------------------------*/
 func createNodes(fileName: String, fileType: String){
    
     if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
@@ -72,91 +84,129 @@ func createNodes(fileName: String, fileType: String){
                         nodeDict[node["coordinates"] as! [Int]]!.neighbors.append(nodeDict[neighbor]!)
                     }
                 }
-                //dump(nodeDict)
             }
         } catch {
-            // handle error
             print("Error")
         }
     }
 }
 
 
-//Euclidean distance squared (No need for sqrt as we don't need actual distance)
+/*------------------------------------
+Calculate euclidean distance squared. No need for sqrt.
+ - Parameters:
+    start: starting coordinates
+    end: ending coordinates
+ - Returns:
+    Euclidean distance squared
+ -------------------------------------*/
 func heuristic(start: [Int], end: [Int]) -> Int{
     return Int(pow(Double(start[1] - end[1]),2) + pow(Double(start[0] - end[0]),2))
 }
 
-//Backtracking function
-func getPath(end: Node) -> [Node] {
-    var path: [Node] = []       //Path stored in reverse order
-    var currentNode = end
-    while (currentNode.parent != nil) {
-        path.append(currentNode)
-        //var temp = currentNode.parent!
-        currentNode = currentNode.parent!
-        /*currentNode.parent = nil
-        currentNode.cost = 0
-        currentNode.h = 0
-        currentNode = temp*/
-    }
-    path.append(currentNode)
-    for node in visited {
-        node.cost = 0
-        node.h = 0
-        node.parent = nil
-    }
-    /*currentNode.parent = nil
-    currentNode.cost = 0
-    currentNode.h = 0*/
-    return path
-}
 
-var visited: Set<Node> = []
+/*------------------------------------
+  Compute A Star Algorithm
+ - Parameters:
+    start: starting coordinates
+    end: ending coordinates
+ - Returns:
+    path of nodes in reverse order
+ -------------------------------------*/
 func aStar(start: [Int], end:[Int]) -> [Node] {
     var frontier: PriorityQueue<Node> = PriorityQueue<Node>(ascending: true)
-    //var visited: Set<Node> = []
+    //Clear values for each run
+    for node in visited {
+        node.f = 0
+        node.h = 0
+        node.g = 0
+        node.parent = nil
+    }
     visited = []
     nodeDict[start]!.h = heuristic(start: start, end: end)
+    nodeDict[start]!.f = nodeDict[start]!.h
     frontier.push(nodeDict[start]!)
-    
+
     while !frontier.isEmpty {
-        let currentNode = frontier.pop()
+        var currentNode = frontier.pop()
         visited.insert(currentNode!)
-        for node in zoneNodes {
-            if (node == currentNode && (currentNode != nodeDict[start])) {      //Not optimal node
-                return [Node(coordinates: [-1,-1])]                             //Set as currentNode
-            }
+        
+        //Ignore non optimal paths that include nodes in the zone array
+        if (zoneNodes.contains(currentNode!) && (currentNode != nodeDict[start])) {
+                currentNode = Node(coordinates: [-1,-1])
         }
+        
         //Found Goal
         if (currentNode!.coordinates == end) {
             return getPath(end: currentNode!)
         }
         
-        
-        //If coord != [-1,-1]
-        for neighbor in currentNode!.neighbors {
-            let newCost = currentNode!.cost + heuristic(start: currentNode!.coordinates, end: neighbor.coordinates)  //Cost from current to neighbor + current cost
-            
-            //If neighbor is not in closed list OR has been in closed list and new cost is less
-            if (!visited.contains(neighbor) || neighbor.cost > newCost) {
-                neighbor.h = heuristic(start: neighbor.coordinates, end: end)
-                neighbor.cost = newCost
-                neighbor.parent = currentNode
-                visited.insert(neighbor)
-                frontier.push(neighbor)
+        //Compute costs of neighbors and add to visited & frontier
+        if (currentNode!.coordinates != [-1,-1]) {
+            for neighbor in currentNode!.neighbors {
+                let newG = currentNode!.g + heuristic(start: currentNode!.coordinates, end: neighbor.coordinates)  //Old g value + distance from current to neighbor
+                
+                //If neighbor is not in closed list OR has been in closed list and new cost is less
+                if (!visited.contains(neighbor) || neighbor.g > newG) {
+                    neighbor.h = heuristic(start: neighbor.coordinates, end: end)
+                    neighbor.g = newG
+                    neighbor.f = newG + neighbor.h                //f = g + h
+                    neighbor.parent = currentNode
+                    visited.insert(neighbor)
+                    frontier.push(neighbor)
+                }
             }
         }
     }
-    return [Node(coordinates: [-1,-1])]         //For testing... need to fix
+    return [Node(coordinates: [-1,-1])]
 }
 
+
+/*------------------------------------
+ Backtracks through nodes to generate path
+ - Parameters:
+    end: end node
+ - Returns:
+    path of nodes in reverse order
+ -------------------------------------*/
+func getPath(end: Node) -> [Node] {
+    var path: [Node] = []
+    var currentNode = end
+    while (currentNode.parent != nil) {
+        path.append(currentNode)
+        currentNode = currentNode.parent!
+    }
+    path.append(currentNode)
+    return path
+}
+
+
+/*------------------------------------
+ Prints the most optimal path
+ - Parameters:
+    path: array of nodes ordered in reverse
+ - Returns:
+    prints each step of path along with values
+ -------------------------------------*/
 func printNodes(path: [Node]) {
     for node in path.reversed() {
-        print(node.coordinates)
+        print("coord: ", node.coordinates)
+        print("g: ", node.g)
+        print("h: ", node.h)
+        print("f: ", node.f)
     }
 }
 
+
+/*------------------------------------
+ Calls other functions to find and display optimal path.
+ Handles starting locations at nodes or not at nodes.
+ - Parameters:
+    start: starting coordinates
+    end: ending coordinates
+ - Returns:
+    prints each step of path along with values
+ -------------------------------------*/
 func findPath(start: [Int], end:[Int]) {
     if (nodeDict[start] != nil) {            //If user is located at existing node
         let path: [Node] = aStar(start: start, end:end)
@@ -164,13 +214,21 @@ func findPath(start: [Int], end:[Int]) {
     }
     else {
         //Zone guidance function
-        //let index = binarySearch(sortedzones: zoneList, location: start)
-        //let zoneArr: [Zone] = zoneRange(sortedzones: zoneList, index: index)
-        let zone = findZone(zoneRange: zoneList, coord: start)      //Could be more than one zone
-        for coord in zone!.nodes {
-            print("----------------")
-            printNodes(path: aStar(start: coord.coordinates, end: end))
+        zoneNodes = findZone(coord: start)      //Could be more than one zone
+        var optimalPath:[Node] = []
+        for node in zoneNodes {
+            let path = aStar(start: node.coordinates, end: end)
+            if (path[0].coordinates != [-1,-1]) {
+                if (optimalPath.isEmpty) {
+                    optimalPath = path.map{$0.copy() as! Node}
+                }
+                else if (optimalPath[0].f > path[0].f) {
+                    optimalPath = path.map{$0.copy() as! Node}
+                }
+            }
         }
+        print("----------------")
+        printNodes(path: optimalPath)
     }
 }
 

@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         print("EABB selected")
         createNodes(fileName: "beacon1", fileType:"json")
         createZones(fileName:"zone", fileType:"json")
-        findPath(start: [5,5], end: [3,9])
+        findPath(start: [5,5], end: [3,7])
     }
 
     @IBAction func bdg3(_ sender: UIButton) {

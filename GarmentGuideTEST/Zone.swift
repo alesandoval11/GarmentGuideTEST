@@ -11,17 +11,31 @@ import Foundation
 
 class Zone {
     let id: Int
-    let extents: [Int]              //Should most probably be a tuple.
+    let extents: [Int]
     let nodes: [Node]
+    var overlap: [Zone]
     init(id: Int, extents: [Int], nodes: [Node]) {
         self.id = id
         self.extents = extents
         self.nodes = nodes
+        self.overlap = []
     }
 }
 
-var zoneList: [Zone] = []
+/*----------------------------------
+            Globals
+-----------------------------------*/
+var zoneDict: [Int: Zone] = [:]             //Holds all the zones
 
+
+/*------------------------------------
+ Generates zones from a JSON file
+ - Parameters:
+    fileName: The name of the file
+    fileType: The type of file
+ - Returns:
+    None
+ -------------------------------------*/
 func createZones(fileName: String, fileType: String){
     
     if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
@@ -29,7 +43,6 @@ func createZones(fileName: String, fileType: String){
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
             if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let building = jsonResult["EABA"] as? [Any] {
-                zoneList.removeAll()
                 for zone in building as! [[String: AnyObject]] {
                     let id = zone["id"] as! Int
                     let extents = zone["extents"] as! [Int]
@@ -38,33 +51,51 @@ func createZones(fileName: String, fileType: String){
                     for coord in zoneCoord {
                         nodes.append(nodeDict[coord]!)
                     }
-                    zoneList.append(Zone(id:id, extents:extents, nodes:nodes))
+                    zoneDict[id] = Zone(id:id, extents:extents, nodes:nodes)
                 }
-                zoneList.sort(by: {$0.extents[0]+$0.extents[2] < $1.extents[0]+$1.extents[2]})      //sort by xmin + xmax
+                for zone in building as! [[String: AnyObject]] {
+                    let overlaps = zone["overlap"] as! [Int]
+                    for ov in overlaps {
+                        zoneDict[zone["id"] as! Int]!.overlap.append(zoneDict[ov]!)
+                    }
+                }
             }
         } catch {
-            // handle error
             print("Error")
         }
     }
 }
 
-//Given zones with same x val, find same y val
-/*************************
-Find one zone, check its connected zones and return list of zones.
-**************************/
-//Future Improvement: Add Binary Search
-func findZone(zoneRange:[Zone], coord: [Int]) -> Zone?{
-    for zone in zoneRange {
+
+/*------------------------------------
+ Finds nodes in zone(s) that are associated with user location.
+ - Parameters:
+    coord: current user location
+ - Returns:
+    nodes to check as possible starting points for a star.
+ -------------------------------------*/
+func findZone(coord: [Int]) -> Set<Node>{
+    var temp:[Node] = []
+    for zone in zoneDict.values {
         if (coord[0] >= zone.extents[0] &&
             coord[0] <= (zone.extents[0] + zone.extents[2]) &&
             coord[1] >= zone.extents[1] &&
             coord[1] <= zone.extents[1] + zone.extents[3]) {
-            zoneNodes = zone.nodes
-            return zone
+            temp += zone.nodes
+            
+            //Check zone connections
+            for overlap in zone.overlap {
+                if (coord[0] >= overlap.extents[0] &&
+                    coord[0] <= (overlap.extents[0] + overlap.extents[2]) &&
+                    coord[1] >= overlap.extents[1] &&
+                    coord[1] <= overlap.extents[1] + overlap.extents[3]) {
+                    temp += overlap.nodes
+                }
+            }
+            return Set(temp)
         }
     }
-    return nil
+    return Set()
 }
 
 

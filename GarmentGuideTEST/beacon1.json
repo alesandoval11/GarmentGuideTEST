@@ -10,7 +10,7 @@
             "label": "w1",
             "type": "waypoint",
             "coordinates": [2,3],
-            "connections": [[3,3]]
+            "connections": [[2,2],[3,3]]
         },
         {
             "label": "w2",
