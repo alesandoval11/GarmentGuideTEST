@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class Node: NSCopying {
     
@@ -199,6 +200,35 @@ func printNodes(path: [Node]) {
 
 
 /*------------------------------------
+ Calculates the angle necessary for the user to turn to be faced toward the desination.
+ - Parameters:
+    start: starting coordinates
+    end: ending coordinates
+    starAngle: the user's current orientation
+ - Returns:
+    correction angle
+ -------------------------------------*/
+/*func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
+    let northAngle = 45.0
+    let userAngle = startAngle
+    let xDist = abs(Double(start[0]-end[0]))
+    let yDist = abs(Double(start[1]-end[1]))
+    /*if (end[0] > start[0] && end[1] > start[1]) {           //Node in top right
+        let node = atan(yDist/xDist) * 180 / Double.pi
+       
+    }
+    else if (end[0] > start[0] && end[1] < start[1]) {      //Node in bottom right
+        
+    }
+    else if (end[0] < start[0] && end[1] < start[1]) {      //Node in bottom left
+        
+    }
+    else {                                                  //Node in top left
+        
+    }*/
+}*/
+
+/*------------------------------------
  Calls other functions to find and display optimal path.
  Handles starting locations at nodes or not at nodes.
  - Parameters:
@@ -227,7 +257,9 @@ func findPath(start: [Int], end:[Int]) {
                 }
             }
         }
+        //let correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: //orientation)
         print("----------------")
+        //print("Angle to First Node: ", correctionAngle)
         printNodes(path: optimalPath)
     }
 }

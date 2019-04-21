@@ -7,17 +7,30 @@
 //
 
 import UIKit
+import CoreLocation
 
-//Undirected graph
-class ViewController: UIViewController {
+var orientation: Double = 0
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
     @IBOutlet weak var selectl: UILabel!
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
     }
-
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Manager failed: \(error)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        orientation = newHeading.trueHeading
+        //print(orientation)
+    }
  
     @IBAction func bdg1(_ sender: UIButton) {
         selectl.text = "EABA"
@@ -31,7 +44,7 @@ class ViewController: UIViewController {
         print("EABB selected")
         createNodes(fileName: "beacon1", fileType:"json")
         createZones(fileName:"zone", fileType:"json")
-        findPath(start: [5,5], end: [3,7])
+        findPath(start: [5,5], end: [3,9])
     }
 
     @IBAction func bdg3(_ sender: UIButton) {
