@@ -42,9 +42,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         selectl.text = "EABB"
         self.performSegue(withIdentifier: "SegueView3", sender: self)
         print("EABB selected")
-        createNodes(fileName: "beacon1", fileType:"json")
-        createZones(fileName:"zone", fileType:"json")
-        findPath(start: [2500,700], end: [2422,1931])
     }
 
     @IBAction func bdg3(_ sender: UIButton) {
