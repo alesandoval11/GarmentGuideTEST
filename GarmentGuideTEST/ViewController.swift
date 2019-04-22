@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
-  var varButtons: [String] = []
-class ViewController: UIViewController {
-
+var orientation: Double = 0
+var varButtons: [String] = []
+class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    
     @IBOutlet weak var SelectBuildingLabel: UILabel!
     @IBOutlet weak var EABA: UIButton!
     @IBOutlet weak var EABB: UIButton!
@@ -19,6 +23,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+
         // JSON File to be loaded, creates
         if let path = Bundle.main.path(forResource: "beacon1", ofType: "json") {
             do {
@@ -53,7 +61,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
- 
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Manager failed: \(error)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        orientation = newHeading.trueHeading
+        //print("Phone Orientation", orientation)
+    }
     @IBAction func bdg1(_ sender: UIButton) {
         // "EABA"
         self.performSegue(withIdentifier: "SegueView2", sender: self)

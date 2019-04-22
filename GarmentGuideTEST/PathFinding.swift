@@ -5,7 +5,6 @@
 //  Created by Ray Kim on 3/4/19.
 //  Copyright © 2019 Alejandra Sandoval. All rights reserved.
 //
-
 import Foundation
 import CoreLocation
 
@@ -39,7 +38,7 @@ extension Node: Hashable {
     static func ==(lhs: Node, rhs: Node) -> Bool {
         return lhs.coordinates == rhs.coordinates
     }
-
+    
     func hash(into hasher: inout Hasher) {
         hasher.combine(coordinates)
     }
@@ -53,23 +52,22 @@ extension Node: Comparable {
 }
 
 /*----------------------------------
-                Globals
+ Globals
  -----------------------------------*/
 var nodeDict: [[Int]: Node] = [:]       //Holds all the nodes.
 var zoneNodes: Set<Node> = []           //Holds all nodes in chosen zone
 var visited: Set<Node> = []             //Visited nodes for a star
 
-
 /*------------------------------------
  Generates nodes from a JSON file
  - Parameters:
-    fileName: The name of the file
-    fileType: The type of file
+ fileName: The name of the file
+ fileType: The type of file
  - Returns:
-    None
+ None
  -------------------------------------*/
 func createNodes(fileName: String, fileType: String){
-   
+    
     if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -94,12 +92,12 @@ func createNodes(fileName: String, fileType: String){
 
 
 /*------------------------------------
-Calculate euclidean distance squared. No need for sqrt.
+ Calculate euclidean distance squared. No need for sqrt.
  - Parameters:
-    start: starting coordinates
-    end: ending coordinates
+ start: starting coordinates
+ end: ending coordinates
  - Returns:
-    Euclidean distance squared
+ Euclidean distance squared
  -------------------------------------*/
 func heuristic(start: [Int], end: [Int]) -> Int{
     return Int(pow(Double(start[1] - end[1]),2) + pow(Double(start[0] - end[0]),2))
@@ -107,12 +105,12 @@ func heuristic(start: [Int], end: [Int]) -> Int{
 
 
 /*------------------------------------
-  Compute A Star Algorithm
+ Compute A Star Algorithm
  - Parameters:
-    start: starting coordinates
-    end: ending coordinates
+ start: starting coordinates
+ end: ending coordinates
  - Returns:
-    path of nodes in reverse order
+ path of nodes in reverse order
  -------------------------------------*/
 func aStar(start: [Int], end:[Int]) -> [Node] {
     var frontier: PriorityQueue<Node> = PriorityQueue<Node>(ascending: true)
@@ -127,14 +125,14 @@ func aStar(start: [Int], end:[Int]) -> [Node] {
     nodeDict[start]!.h = heuristic(start: start, end: end)
     nodeDict[start]!.f = nodeDict[start]!.h
     frontier.push(nodeDict[start]!)
-
+    
     while !frontier.isEmpty {
         var currentNode = frontier.pop()
         visited.insert(currentNode!)
         
         //Ignore non optimal paths that include nodes in the zone array
         if (zoneNodes.contains(currentNode!) && (currentNode != nodeDict[start])) {
-                currentNode = Node(coordinates: [-1,-1])
+            currentNode = Node(coordinates: [-1,-1])
         }
         
         //Found Goal
@@ -166,9 +164,9 @@ func aStar(start: [Int], end:[Int]) -> [Node] {
 /*------------------------------------
  Backtracks through nodes to generate path
  - Parameters:
-    end: end node
+ end: end node
  - Returns:
-    path of nodes in reverse order
+ path of nodes in reverse order
  -------------------------------------*/
 func getPath(end: Node) -> [Node] {
     var path: [Node] = []
@@ -185,9 +183,9 @@ func getPath(end: Node) -> [Node] {
 /*------------------------------------
  Prints the most optimal path
  - Parameters:
-    path: array of nodes ordered in reverse
+ path: array of nodes ordered in reverse
  - Returns:
-    prints each step of path along with values
+ prints each step of path along with values
  -------------------------------------*/
 func printNodes(path: [Node]) {
     for node in path.reversed() {
@@ -202,11 +200,11 @@ func printNodes(path: [Node]) {
 /*------------------------------------
  Calculates the angle necessary for the user to turn to be faced toward the desination.
  - Parameters:
-    start: starting coordinates
-    end: ending coordinates
-    starAngle: the user's current orientation
+ start: starting coordinates
+ end: ending coordinates
+ starAngle: the user's current orientation
  - Returns:
-    correction angle
+ correction angle
  -------------------------------------*/
 func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
     let northAngle = 45.0
@@ -223,7 +221,6 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
     let nodeVX = Double(end[0] - start[0])
     let nodeVY = Double(end[1] - start[1])
     var nodeA:Double
-    print("Temp: ", temp)
     
     if nodeVX > 0 && nodeVY >= 0 { // Q1
         nodeA = (atan(nodeVY/nodeVX) * 180 / Double.pi)
@@ -245,7 +242,6 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
             nodeA = 270
         }
     }
-    print("NodeA: ", nodeA)
     if (nodeA - temp) < 0 {
         nodeA = 360 + nodeA - temp
     }
@@ -260,23 +256,33 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
     }
 }
 
+
+//Dummy function
+func sendPacket(angle: Double, distance: Int) {
+    print("Angle: ", angle)
+    print("Distance: ", distance)
+}
+
 /*------------------------------------
  Calls other functions to find and display optimal path.
  Handles starting locations at nodes or not at nodes.
  - Parameters:
-    start: starting coordinates
-    end: ending coordinates
+ start: starting coordinates
+ end: ending coordinates
  - Returns:
-    prints each step of path along with values
+ prints each step of path along with values
  -------------------------------------*/
-func findPath(start: [Int], end:[Int]) {
+func findPath(start: [Int], end:[Int])->Double {
     var optimalPath:[Node] = []
-    var correctionAngle:Double
+    //var correctionAngle:Double
+    var atNode:Bool = false
     if (nodeDict[start] != nil) {            //If user is located at existing node
         optimalPath = aStar(start: start, end:end)
+        atNode = true
     }
     else {
         //Zone guidance function
+        atNode = false
         zoneNodes = findZone(coord: start)      //Could be more than one zone
         if zoneNodes.count > 0 {
             for node in zoneNodes {
@@ -296,15 +302,22 @@ func findPath(start: [Int], end:[Int]) {
         }
     }
     if optimalPath.count > 0 {
-        //correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: orientation)
-        correctionAngle = 360
+        correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: orientation)
     }
     else {
         correctionAngle = 360
     }
-    print("----------------")
-    print("Angle to First Node: ", correctionAngle)
-    printNodes(path: optimalPath)
+    //call Esteban's function with inputs: correctionAngle, g at end + euclidean of current location to first node
+    /*
+    if (atNode) {
+        sendPacket(angle: correctionAngle, distance: optimalPath[0].g)
+    }
+    else {
+        sendPacket(angle: correctionAngle, distance: optimalPath[0].g + heuristic(start: start, end: optimalPath[optimalPath.count-1].coordinates))
+    }
+ */
+    return correctionAngle
 }
+
 
 

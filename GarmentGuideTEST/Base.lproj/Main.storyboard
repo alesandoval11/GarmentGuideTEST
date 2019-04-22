@@ -431,7 +431,6 @@
                                 <state key="normal" title="Back to EABA"/>
                                 <connections>
                                     <action selector="goBack1:" destination="fe3-hZ-dJR" eventType="touchUpInside" id="JNQ-cI-pac"/>
-                                    <segue destination="xQc-MQ-lw9" kind="show" identifier="goBackEABA" id="CJF-Yc-N98"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -447,11 +446,12 @@
                         <outlet property="backBut" destination="O5U-rT-ivv" id="ixL-zx-RDb"/>
                         <outlet property="oldimage" destination="vLk-N9-Aw8" id="fpr-uc-11O"/>
                         <outlet property="turnButton" destination="2k6-2r-7hi" id="8hE-6H-MKL"/>
+                        <segue destination="xQc-MQ-lw9" kind="show" identifier="goBackEABA" id="f4p-pS-c5P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21E-sO-LKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791.2" y="131.78410794602701"/>
+            <point key="canvasLocation" x="1630" y="182"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GAc-bL-VgL">
@@ -572,7 +572,7 @@
         <image name="arrow" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CJF-Yc-N98"/>
+        <segue reference="f4p-pS-c5P"/>
         <segue reference="6Rf-sg-5Nm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>

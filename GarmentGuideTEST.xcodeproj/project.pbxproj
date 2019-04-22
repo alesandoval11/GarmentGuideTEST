@@ -19,6 +19,14 @@
 		01D720B7226E382100D9621C /* wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01D720A5226E382100D9621C /* wrapper.cpp */; };
 		01D720BC226E3AC600D9621C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720BB226E3AC600D9621C /* ViewController.swift */; };
 		01D720BE226E4F6100D9621C /* beacon1.json in Resources */ = {isa = PBXBuildFile; fileRef = 01D720BD226E4F6100D9621C /* beacon1.json */; };
+		01D720C8226E530200D9621C /* PathFinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720BF226E530100D9621C /* PathFinding.swift */; };
+		01D720C9226E530200D9621C /* BeaconScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720C0226E530100D9621C /* BeaconScanner.swift */; };
+		01D720CA226E530200D9621C /* SwiftPriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720C1226E530100D9621C /* SwiftPriorityQueue.swift */; };
+		01D720CB226E530200D9621C /* zone.json in Resources */ = {isa = PBXBuildFile; fileRef = 01D720C2226E530100D9621C /* zone.json */; };
+		01D720CD226E530200D9621C /* Eddystone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720C4226E530100D9621C /* Eddystone.swift */; };
+		01D720CE226E530200D9621C /* Trilateration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720C5226E530100D9621C /* Trilateration.swift */; };
+		01D720CF226E530200D9621C /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720C6226E530100D9621C /* Zone.swift */; };
+		01D720D0226E530200D9621C /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D720C7226E530100D9621C /* DispatchTimer.swift */; };
 		01FE41EE222618FB0062E08C /* secondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41ED222618FB0062E08C /* secondView.swift */; };
 		01FE41F0222621160062E08C /* thirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41EF222621160062E08C /* thirdView.swift */; };
 		01FE41F22226257A0062E08C /* fourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01FE41F12226257A0062E08C /* fourthView.swift */; };
@@ -55,6 +63,14 @@
 		01D720A8226E382100D9621C /* server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server.h; sourceTree = "<group>"; };
 		01D720BB226E3AC600D9621C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01D720BD226E4F6100D9621C /* beacon1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beacon1.json; sourceTree = "<group>"; };
+		01D720BF226E530100D9621C /* PathFinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFinding.swift; sourceTree = "<group>"; };
+		01D720C0226E530100D9621C /* BeaconScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconScanner.swift; sourceTree = "<group>"; };
+		01D720C1226E530100D9621C /* SwiftPriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPriorityQueue.swift; sourceTree = "<group>"; };
+		01D720C2226E530100D9621C /* zone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = zone.json; sourceTree = "<group>"; };
+		01D720C4226E530100D9621C /* Eddystone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Eddystone.swift; sourceTree = "<group>"; };
+		01D720C5226E530100D9621C /* Trilateration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trilateration.swift; sourceTree = "<group>"; };
+		01D720C6226E530100D9621C /* Zone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		01D720C7226E530100D9621C /* DispatchTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTimer.swift; sourceTree = "<group>"; };
 		01FE41ED222618FB0062E08C /* secondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondView.swift; sourceTree = "<group>"; };
 		01FE41EF222621160062E08C /* thirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdView.swift; sourceTree = "<group>"; };
 		01FE41F12226257A0062E08C /* fourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourthView.swift; sourceTree = "<group>"; };
@@ -101,6 +117,14 @@
 		01B6CD352225DAFB00A71469 /* GarmentGuideTEST */ = {
 			isa = PBXGroup;
 			children = (
+				01D720C0226E530100D9621C /* BeaconScanner.swift */,
+				01D720C7226E530100D9621C /* DispatchTimer.swift */,
+				01D720C4226E530100D9621C /* Eddystone.swift */,
+				01D720BF226E530100D9621C /* PathFinding.swift */,
+				01D720C1226E530100D9621C /* SwiftPriorityQueue.swift */,
+				01D720C5226E530100D9621C /* Trilateration.swift */,
+				01D720C2226E530100D9621C /* zone.json */,
+				01D720C6226E530100D9621C /* Zone.swift */,
 				01D720BD226E4F6100D9621C /* beacon1.json */,
 				01D720BB226E3AC600D9621C /* ViewController.swift */,
 				01D720A0226E382000D9621C /* libservercpp.a */,
@@ -223,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01B6CD412225DAFC00A71469 /* LaunchScreen.storyboard in Resources */,
+				01D720CB226E530200D9621C /* zone.json in Resources */,
 				010C27FD224296C300F670A3 /* test.json in Resources */,
 				01B6CD3E2225DAFC00A71469 /* Assets.xcassets in Resources */,
 				01B6CD3C2225DAFB00A71469 /* Main.storyboard in Resources */,
@@ -245,13 +270,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				01A9E017226D53B300018D6C /* option1.swift in Sources */,
+				01D720CD226E530200D9621C /* Eddystone.swift in Sources */,
+				01D720CF226E530200D9621C /* Zone.swift in Sources */,
 				01FE41F0222621160062E08C /* thirdView.swift in Sources */,
+				01D720C9226E530200D9621C /* BeaconScanner.swift in Sources */,
+				01D720CA226E530200D9621C /* SwiftPriorityQueue.swift in Sources */,
 				01FE41EE222618FB0062E08C /* secondView.swift in Sources */,
 				01D720BC226E3AC600D9621C /* ViewController.swift in Sources */,
+				01D720CE226E530200D9621C /* Trilateration.swift in Sources */,
 				01D720B7226E382100D9621C /* wrapper.cpp in Sources */,
+				01D720C8226E530200D9621C /* PathFinding.swift in Sources */,
 				01B6CD372225DAFB00A71469 /* AppDelegate.swift in Sources */,
 				01FE41F22226257A0062E08C /* fourthView.swift in Sources */,
 				01D720B4226E382100D9621C /* server.cpp in Sources */,
+				01D720D0226E530200D9621C /* DispatchTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

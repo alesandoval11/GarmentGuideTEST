@@ -5,38 +5,22 @@
 //  Created by Ray Kim on 3/20/19.
 //  Copyright © 2019 Alejandra Sandoval. All rights reserved.
 //
-
 import Foundation
 import UIKit
 
-class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate {
+class scannerView: UIViewController, BeaconScannerDelegate {
     
-    @IBOutlet weak var textField: UITextField!
     var beaconScanner: BeaconScanner!
     @IBAction override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        textField.text = ""
         createNodes(fileName: "beacon1", fileType:"json")
         createZones(fileName:"zone", fileType:"json")
+        //send START ROUTE packet
         self.beaconScanner = BeaconScanner()
         self.beaconScanner!.delegate = self
         self.beaconScanner!.startScanning()
         
-    }
-    
-    func printTable() { // debug print function
-        /*
-        DispatchQueue.main.async {
-            self.textField.text? = ""
-            
-            for b in availableBeacons{
-                self.textField.text?.append(b.name + "\t" + String(b.RSSI) + " dB\n\tMean:\n\t")
-                self.textField.text?.append(String(b.meanRSSI) + " dB\n\tStd Dev:\n\t" + String(b.stdRSSI) + " dB\n")
-                self.textField.text?.append(String(b.distance) + " m\n")
-            }
-        }
-         */
     }
     
     func trilaterate(){
@@ -52,6 +36,7 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                     let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    //send END ROUTE packet
                     //exit
                     
                 }
@@ -61,80 +46,71 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
     
     func didFindBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
         availableBeacons.append(ParsedBeacon(bInfo: beaconInfo))
-        printTable()
     }
     func didLoseBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-        //DispatchQueue.main.async {
-            for i in 0...(availableBeacons.count - 1){
-                if availableBeacons[i].id == beaconInfo.beaconID.description {
-                    availableBeacons.remove(at: i)
-                    break
-                }
+        for i in 0...(availableBeacons.count - 1){
+            if availableBeacons[i].id == beaconInfo.beaconID.description {
+                availableBeacons.remove(at: i)
+                break
             }
-        //}
-        printTable()
+        }
     }
     func didUpdateBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-      //  DispatchQueue.main.async {
-            if beaconInfo.RSSI != 127 && beaconInfo.RSSI >= -75{
-                for i in 0...(availableBeacons.count - 1) {
-                    if availableBeacons[i].id == beaconInfo.beaconID.description {
-                        availableBeacons[i].RSSI = beaconInfo.RSSI
-                        
-                        if availableBeacons[i].recRSSI.count == recRSSIsize {
-                            if (availableBeacons[i].repI == 10) {
-                                availableBeacons[i].repI = 0 // reset replace index
-                                availableBeacons[i].repHalf = 1 - availableBeacons[i].repHalf // switch sides
-                                
-                                // calculate statistics
-                                var sum =  availableBeacons[i].recRSSI.reduce(0,+)
-                                var sumStd = 0.0
-                                availableBeacons[i].meanRSSI = sum/recRSSIsize
-                                for j in 0...(recRSSIsize - 1) {
-                                    sumStd += pow((Double(availableBeacons[i].recRSSI[j] - availableBeacons[i].meanRSSI)), 2)
-                                }
-                                sumStd /= Double(recRSSIsize)
-                                if sumStd == 0.0 {
-                                    print("sumStd == 0")
-                                }
-                                availableBeacons[i].stdRSSI = sqrt(Double(sumStd))
-                                
-                                sum = 0
-                                var k = 0
-                                for j in 0...(recRSSIsize - 1) {
-                                    if (availableBeacons[i].recRSSI[j] <= availableBeacons[i].meanRSSI + Int(1.5 * availableBeacons[i].stdRSSI)) && (availableBeacons[i].recRSSI[j] >= availableBeacons[i].meanRSSI - Int(1.5 * availableBeacons[i].stdRSSI)) {
-                                        sum += availableBeacons[i].recRSSI[j]
-                                        k += 1
-                                    }
-                                }
-                                if k != 0 {
-                                    availableBeacons[i].meanRSSI = sum/k
-                                    availableBeacons[i].distance = pow(10,Double((RSSIm - availableBeacons[i].meanRSSI))/Double((10*pathLoss)))
-                                }
-                                trilaterate()
-                                //availableBeacons[i].recRSSI.removeAll()
-                            }
-                            else { //
-                                if availableBeacons[i].repHalf == 0 {
-                                    availableBeacons[i].recRSSI[availableBeacons[i].repI] = beaconInfo.RSSI
-                                }
-                                else {// repHalf == 1
-                                    availableBeacons[i].recRSSI[availableBeacons[i].repI + 10] = beaconInfo.RSSI
-                                }
-                                availableBeacons[i].repI += 1
-                            }
-                        }
-                        else{
-                            availableBeacons[i].recRSSI.append(beaconInfo.RSSI)
-                        }
-                        break
+        if beaconInfo.RSSI != 127 && beaconInfo.RSSI >= -75{
+            for i in 0...(availableBeacons.count - 1) {
+                if availableBeacons[i].id == beaconInfo.beaconID.description {
+                    availableBeacons[i].RSSI = beaconInfo.RSSI
+                    
+                    if availableBeacons[i].recRSSI.count == recRSSIsize {
+                        if (availableBeacons[i].repI == 10) {
+                            availableBeacons[i].repI = 0 // reset replace index
+                            availableBeacons[i].repHalf = 1 - availableBeacons[i].repHalf // switch sides
                             
- 
+                            // calculate statistics
+                            var sum =  availableBeacons[i].recRSSI.reduce(0,+)
+                            var sumStd = 0.0
+                            availableBeacons[i].meanRSSI = sum/recRSSIsize
+                            for j in 0...(recRSSIsize - 1) {
+                                sumStd += pow((Double(availableBeacons[i].recRSSI[j] - availableBeacons[i].meanRSSI)), 2)
+                            }
+                            sumStd /= Double(recRSSIsize)
+                            if sumStd == 0.0 {
+                            }
+                            availableBeacons[i].stdRSSI = sqrt(Double(sumStd))
+                            
+                            sum = 0
+                            var k = 0
+                            for j in 0...(recRSSIsize - 1) {
+                                if (availableBeacons[i].recRSSI[j] <= availableBeacons[i].meanRSSI + Int(1.5 * availableBeacons[i].stdRSSI)) && (availableBeacons[i].recRSSI[j] >= availableBeacons[i].meanRSSI - Int(1.5 * availableBeacons[i].stdRSSI)) {
+                                    sum += availableBeacons[i].recRSSI[j]
+                                    k += 1
+                                }
+                            }
+                            if k != 0 {
+                                availableBeacons[i].meanRSSI = sum/k
+                                availableBeacons[i].distance = pow(10,Double((RSSIm - availableBeacons[i].meanRSSI))/Double((10*pathLoss)))
+                            }
+                            trilaterate()
+                        }
+                        else { //
+                            if availableBeacons[i].repHalf == 0 {
+                                availableBeacons[i].recRSSI[availableBeacons[i].repI] = beaconInfo.RSSI
+                            }
+                            else {// repHalf == 1
+                                availableBeacons[i].recRSSI[availableBeacons[i].repI + 10] = beaconInfo.RSSI
+                            }
+                            availableBeacons[i].repI += 1
+                        }
                     }
+                    else{
+                        availableBeacons[i].recRSSI.append(beaconInfo.RSSI)
+                    }
+                    break
+                    
+                    
                 }
             }
-       // }
-        printTable()
+        }
     }
     func didObserveURLBeacon(beaconScanner: BeaconScanner, URL: NSURL, RSSI: Int) {}
 }
@@ -170,7 +146,7 @@ var beaconNames =   [
     "f7826da6bc5b71e0893e64594b44346b": ("Beacon28",(1227.0,1992.0)), //mtAu10
     "f7826da6bc5b71e0893e6c566d504459": ("Beacon29",(1343.0,1865.0)), //mtv1Ns
     "f7826da6bc5b71e0893e4f5238783842": ("Beacon30",(1116.0,1865.0)) //mtmhoU
-    ]
+]
 
 var availableBeacons = [ParsedBeacon]()
 let recRSSIsize = 20
@@ -178,7 +154,6 @@ let pathLoss = 1.4 //Rise:2.75     //2-3
 let RSSIm = -48         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 var destination: [Int] = [2422,1520]
 let err = 63.0          //1 meter
-
 class ParsedBeacon {
     let name: String
     let id: String

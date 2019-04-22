@@ -7,7 +7,6 @@
 //
 import UIKit
 
-var destination: [Int] = [0,0]
 
 class secondView: UIViewController {
     
@@ -53,7 +52,7 @@ class secondView: UIViewController {
     //Action of Buttons
     @IBAction func firstButtonAct(_ sender: Any) {
         print("Button for \(firstLabelButton) pressed")
-        destination = [122,122]
+        destination = [2422,1520]
               self.performSegue(withIdentifier: "toScanner", sender: self)
 
     }
