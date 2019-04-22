@@ -242,6 +242,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="firstButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="2Ap-FH-TPe"/>
+                                    <segue destination="fe3-hZ-dJR" kind="showDetail" identifier="hey" id="Pge-lP-4eE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD1-fV-7AG">
@@ -356,6 +357,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxW-kX-4yK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="932" y="133.5832083958021"/>
+        </scene>
+        <!--Option1-->
+        <scene sceneID="ne5-48-FFQ">
+            <objects>
+                <viewController id="fe3-hZ-dJR" customClass="option1" customModule="GarmentGuideTEST" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fWp-jA-Wba">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5U-rT-ivv">
+                                <rect key="frame" x="75" y="581" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="goBack1:" destination="fe3-hZ-dJR" eventType="touchUpInside" id="JNQ-cI-pac"/>
+                                    <segue destination="xQc-MQ-lw9" kind="show" identifier="goBackEABA" id="CJF-Yc-N98"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-2r-7hi">
+                                <rect key="frame" x="130" y="447" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Turn 45 degrees"/>
+                                <connections>
+                                    <action selector="rotationButton:" destination="fe3-hZ-dJR" eventType="touchUpInside" id="iMp-NK-8Wq"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transparent-arrow-hi" translatesAutoresizingMaskIntoConstraints="NO" id="vLk-N9-Aw8">
+                                <rect key="frame" x="34" y="188" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rJm-qM-6Kl"/>
+                    </view>
+                    <connections>
+                        <outlet property="backBut" destination="O5U-rT-ivv" id="ixL-zx-RDb"/>
+                        <outlet property="oldimage" destination="vLk-N9-Aw8" id="fpr-uc-11O"/>
+                        <outlet property="turnButton" destination="2k6-2r-7hi" id="8hE-6H-MKL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="21E-sO-LKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1792" y="132"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GAc-bL-VgL">
@@ -473,9 +517,11 @@
     <resources>
         <image name="EyeBlk" width="2267" height="2021"/>
         <image name="Logo-long" width="895" height="245"/>
+        <image name="transparent-arrow-hi" width="600" height="457"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mYs-Bm-cjt"/>
+        <segue reference="CJF-Yc-N98"/>
+        <segue reference="6Rf-sg-5Nm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
 </document>

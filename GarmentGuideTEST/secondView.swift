@@ -43,6 +43,9 @@ class secondView: UIViewController {
     //Action of Buttons
     @IBAction func firstButtonAct(_ sender: Any) {
         print("Button for \(firstLabelButton) pressed")
+    
+              //self.performSegue(withIdentifier: "hey", sender: self)
+
     }
     @IBAction func secondButtonAct(_ sender: UIButton) {
        print("Button for \(secondLabelButton) pressed")
