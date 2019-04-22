@@ -42,7 +42,30 @@
             "type": "location",
             "coordinates": [1,0],
             "connections": [5,6]
+        },
+        {
+            "name": "Room Test 5",
+            "label": "Girl's Restroom//",
+            "type": "location",
+            "coordinates": [1,0],
+            "connections": [5,6]
+        },
+        {
+            "name": "Room Test 6",
+            "label": "Girl's Restroom//",
+            "type": "location",
+            "coordinates": [1,0],
+            "connections": [5,6]
+        },
+        {
+            "name": "Room Test 7",
+            "label": "Girl's Restroom//",
+            "type": "location",
+            "coordinates": [1,0],
+            "connections": [5,6]
         }
+        
+        
     ]
 }
 

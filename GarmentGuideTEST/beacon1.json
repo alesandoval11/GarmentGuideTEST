@@ -2,12 +2,14 @@
     "EABA":[
         {
             "label": "Classroom 1: Entrance",
+            "name": "Classroom 1: Entrance",
             "type": "location",
             "coordinates": [2422,1520],
             "connections": [[2422,1627],[2629,244]]
         },
         {
             "label": "Classroom 1: Back Exit",
+            "name": "Classroom 1: Back Exit",
             "type": "location",
             "coordinates": [2629,244],
             "connections": [[2422,1520]]
@@ -15,113 +17,134 @@
         {
             "label": "N3",
             "type": "waypoint",
+             "name": "",
             "coordinates": [2422,1627],
             "connections": [[2422,1520],[2679,1627]]
         },
         {
             "label": "N4",
             "type": "waypoint",
+             "name": "",
             "coordinates": [2679,1627],
             "connections": [[2422,1627],[2679,1803]]
         },
         {
             "label": "N5",
             "type": "waypoint",
+             "name": "",
             "coordinates": [2679,1803],
             "connections": [[2679,1627],[2422,1803]]
         },
         {
             "label": "N6",
             "type": "waypoint",
+             "name": "",
             "coordinates": [2422,1803],
             "connections": [[2679,1803],[2422,1931]]
         },
         {
             "label": "N7",
+               "name": "",
             "type": "waypoint",
+          
             "coordinates": [2422,1931],
             "connections": [[2422,1803],[1704,1931],[2430,2409]]
         },
         {
             "label": "Building Entrance",
+            "name": "Building Entrance",
             "type": "location",
+            
             "coordinates": [2430,2409],
             "connections": [[2422,1931]]
         },
         {
             "label": "N9",
+               "name": "",
             "type": "waypoint",
             "coordinates": [1704,1931],
             "connections": [[1701,2220],[1571,1931],[2422,1931]]
         },
         {
             "label": "N10",
+             "name": "",
             "type": "waypoint",
             "coordinates": [1571,1931],
             "connections": [[1704,1931],[1427,1931]]
         },
         {
             "label": "N11",
+             "name": "",
             "type": "waypoint",
             "coordinates": [1427,1931],
             "connections": [[1571,1931],[1245,1931],[1424,2220]]
         },
         {
             "label": "Conference Room: Entrance 1",
+            "name": "Conf Room: Entrance 1",
             "type": "location",
             "coordinates": [1424,2220],
             "connections": [[1427,1931]]
         },
         {
             "label": "Conference Room: Entrance 2",
+             "name": "Conf Room: Entrance 2",
             "type": "location",
             "coordinates": [1701,2220],
             "connections": [[1704,1931]]
         },
         {
             "label": "N14",
+             "name": "",
             "type": "waypoint",
             "coordinates": [1245,1931],
             "connections": [[1427,1931],[1300,1993],[1130,1993],[1245,1797]]
         },
         {
             "label": "Men's Restroom",
+             "name": "Men's Restroom",
             "type": "location",
             "coordinates": [1300,1993],
             "connections": [[1245,1931]]
         },
         {
             "label": "Women's Restroom",
+             "name": "Women's Restroom",
             "type": "location",
             "coordinates": [1130,1993],
             "connections": [[1245,1931]]
         },
         {
             "label": "N17",
+             "name": "",
             "type": "waypoint",
             "coordinates": [1245,1797],
             "connections": [[1519,1797],[1245,1931]]
         },
         {
             "label": "N18",
+             "name": "",
             "type": "waypoint",
             "coordinates": [1519,1797],
             "connections": [[1245,1797],[1519,1642]]
         },
         {
             "label": "N19",
+             "name": "",
             "type": "waypoint",
             "coordinates": [1519,1642],
             "connections": [[1519,1797],[1394,1642]]
         },
         {
             "label": "N20",
+             "name": "",
             "type": "waypoint",
             "coordinates": [1394,1642],
             "connections": [[1519,1642],[1392,1576]]
         },
         {
             "label": "Classroom 2: Entrance",
+             "name": "Classroom 2: Entrance",
             "type": "location",
             "coordinates": [1392,1576],
             "connections": [[1394,1642]]

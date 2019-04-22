@@ -296,7 +296,8 @@ func findPath(start: [Int], end:[Int]) {
         }
     }
     if optimalPath.count > 0 {
-        correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: orientation)
+        //correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: orientation)
+        correctionAngle = 360
     }
     else {
         correctionAngle = 360

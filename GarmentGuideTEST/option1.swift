@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 extension UIImage {
     convenience init(view: UIView) {
         UIGraphicsBeginImageContext(view.frame.size)
@@ -131,15 +132,38 @@ class option1: UIViewController {
     @IBOutlet weak var backBut: UIButton!
     
     @IBAction func rotationButton(_ sender: Any) {
-        let image = UIImage(view: oldimage)
+        let image2 = UIImage(view: oldimage)
         
-        _ = image.fixedOrientation().imageRotatedByDegrees(degrees: 30.0)
-        let image2 = imageRotatedByDegrees(oldImage: image, deg: 90.0)
+       let image3 = image2.fixedOrientation().imageRotatedByDegrees(degrees: 34.0)
+       // let image3 = imageRotatedByDegrees(oldImage: image2, deg: 90.0)
+        print(destination)
         print("sjdfsadfasdf")
-        
+        oldimage.image = image3
     }
     @IBAction func goBack1(_ sender: Any) {
           
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        //Loads values for secondView//ButtonsInfo
+        if segue.destination is secondView
+        {
+            let vc = segue.destination as? secondView
+            vc?.firstLabelButton = varButtons[0]
+            vc?.secondLabelButton = varButtons[1]
+            vc?.thirdLabelButton = varButtons[2]
+            vc?.fourthLabelButton = varButtons[3]
+            vc?.fifthLabelButton = varButtons[4]
+            vc?.sixthLabelButton = varButtons[5]
+            vc?.seventhLabelButton = varButtons[6]
+            vc?.eigthLabelButton = varButtons[7]
+            
+            print(varButtons)
+            
+        }
+        
     }
     
 }

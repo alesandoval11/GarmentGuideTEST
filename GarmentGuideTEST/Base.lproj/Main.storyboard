@@ -230,10 +230,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Naq-td-HaM">
-                                <rect key="frame" x="57" y="210" width="259" height="63"/>
+                                <rect key="frame" x="57" y="171" width="259" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.66666668650000005" green="0.35423035530000002" blue="0.39328057360000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <state key="normal" title="Girl's Restroom"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -242,14 +242,13 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="firstButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="2Ap-FH-TPe"/>
-                                    <segue destination="fe3-hZ-dJR" kind="showDetail" identifier="hey" id="Pge-lP-4eE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YD1-fV-7AG">
-                                <rect key="frame" x="57" y="288" width="259" height="63"/>
+                                <rect key="frame" x="57" y="229" width="259" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1731843002" green="0.64468677279999997" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <state key="normal" title="Boy's Restroom"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -261,10 +260,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSv-4g-xXm">
-                                <rect key="frame" x="57" y="365" width="259" height="63"/>
+                                <rect key="frame" x="58" y="288" width="259" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <state key="normal" title="Room 118"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -276,10 +275,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIC-MZ-26P">
-                                <rect key="frame" x="57" y="443" width="259" height="63"/>
+                                <rect key="frame" x="57" y="342" width="259" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <state key="normal" title="Room 108"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -291,10 +290,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgy-VA-LwK">
-                                <rect key="frame" x="57" y="530" width="259" height="63"/>
+                                <rect key="frame" x="58" y="388" width="259" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
                                 <state key="normal" title="Room 128"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -306,18 +305,18 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select the following destination:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqB-DJ-UoE">
-                                <rect key="frame" x="10" y="162" width="365" height="30"/>
+                                <rect key="frame" x="10" y="133" width="365" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EyeBlk" translatesAutoresizingMaskIntoConstraints="NO" id="2sw-Jm-dWz">
-                                <rect key="frame" x="10" y="50" width="177" height="90"/>
+                                <rect key="frame" x="10" y="29" width="177" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="E A B A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3R-10-RsN">
-                                <rect key="frame" x="171" y="72" width="163" height="47"/>
+                                <rect key="frame" x="171" y="51" width="163" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="43"/>
                                 <nil key="textColor"/>
@@ -338,6 +337,51 @@
                                     <action selector="backHome2:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="vph-jz-vSO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2N-4i-eBL">
+                                <rect key="frame" x="58" y="440" width="259" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <state key="normal" title="Room 118"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="thirdButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="NKv-Ht-8nt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbv-ap-lJS">
+                                <rect key="frame" x="57" y="554" width="259" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <state key="normal" title="Room 118"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="thirdButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="aFn-Oo-58p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiQ-13-fMo">
+                                <rect key="frame" x="57" y="490" width="259" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.65714156930000001" green="0.66666668650000005" blue="0.3679767021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <state key="normal" title="Room 118"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="thirdButtonAct:" destination="xQc-MQ-lw9" eventType="touchUpInside" id="pWq-MM-ubh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85102307799999999" green="0.8508756757" blue="0.85490363840000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="cb0-xU-B94"/>
@@ -346,17 +390,21 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="eigthLabel" destination="Pbv-ap-lJS" id="6pe-1j-Ffb"/>
                         <outlet property="fifthLabel" destination="dgy-VA-LwK" id="50k-lC-HM9"/>
                         <outlet property="firstLabel" destination="Naq-td-HaM" id="QXp-lt-dHP"/>
                         <outlet property="fourthLabel" destination="tIC-MZ-26P" id="Wid-kJ-OdB"/>
                         <outlet property="secondLabel" destination="YD1-fV-7AG" id="MVo-vA-Ulr"/>
+                        <outlet property="seventhLabel" destination="GiQ-13-fMo" id="T7Z-lk-ly5"/>
+                        <outlet property="sixthLabel" destination="R2N-4i-eBL" id="EDF-FO-Vme"/>
                         <outlet property="thirdLabel" destination="hSv-4g-xXm" id="QXd-DS-tFf"/>
                         <segue destination="BYZ-38-t0r" kind="showDetail" identifier="home2" id="6Rf-sg-5Nm"/>
+                        <segue destination="fe3-hZ-dJR" kind="show" identifier="toScanner" id="nVm-lF-i0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxW-kX-4yK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="133.5832083958021"/>
+            <point key="canvasLocation" x="941.60000000000002" y="182.15892053973016"/>
         </scene>
         <!--Option1-->
         <scene sceneID="ne5-48-FFQ">
@@ -366,29 +414,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5U-rT-ivv">
-                                <rect key="frame" x="75" y="581" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="goBack1:" destination="fe3-hZ-dJR" eventType="touchUpInside" id="JNQ-cI-pac"/>
-                                    <segue destination="xQc-MQ-lw9" kind="show" identifier="goBackEABA" id="CJF-Yc-N98"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-2r-7hi">
-                                <rect key="frame" x="130" y="447" width="114" height="30"/>
+                                <rect key="frame" x="130" y="100" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Turn 45 degrees"/>
                                 <connections>
                                     <action selector="rotationButton:" destination="fe3-hZ-dJR" eventType="touchUpInside" id="iMp-NK-8Wq"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="transparent-arrow-hi" translatesAutoresizingMaskIntoConstraints="NO" id="vLk-N9-Aw8">
-                                <rect key="frame" x="34" y="188" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="vLk-N9-Aw8">
+                                <rect key="frame" x="59.5" y="205.5" width="256" height="256"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5U-rT-ivv">
+                                <rect key="frame" x="140" y="586" width="94" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back to EABA"/>
+                                <connections>
+                                    <action selector="goBack1:" destination="fe3-hZ-dJR" eventType="touchUpInside" id="JNQ-cI-pac"/>
+                                    <segue destination="xQc-MQ-lw9" kind="show" identifier="goBackEABA" id="CJF-Yc-N98"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vLk-N9-Aw8" firstAttribute="centerY" secondItem="fWp-jA-Wba" secondAttribute="centerY" id="8Gs-Ke-xz0"/>
+                            <constraint firstItem="vLk-N9-Aw8" firstAttribute="centerX" secondItem="fWp-jA-Wba" secondAttribute="centerX" id="KOU-VN-8OI"/>
+                            <constraint firstItem="vLk-N9-Aw8" firstAttribute="centerX" secondItem="fWp-jA-Wba" secondAttribute="centerX" id="beG-DX-0cv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rJm-qM-6Kl"/>
                     </view>
                     <connections>
@@ -399,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21E-sO-LKO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1792" y="132"/>
+            <point key="canvasLocation" x="1791.2" y="131.78410794602701"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GAc-bL-VgL">
@@ -517,7 +569,7 @@
     <resources>
         <image name="EyeBlk" width="2267" height="2021"/>
         <image name="Logo-long" width="895" height="245"/>
-        <image name="transparent-arrow-hi" width="600" height="457"/>
+        <image name="arrow" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CJF-Yc-N98"/>
