@@ -29,7 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         orientation = newHeading.trueHeading
-        //print(orientation)
+        //print("Phone Orientation", orientation)
     }
  
     @IBAction func bdg1(_ sender: UIButton) {
@@ -44,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("EABB selected")
         createNodes(fileName: "beacon1", fileType:"json")
         createZones(fileName:"zone", fileType:"json")
-        findPath(start: [5,5], end: [3,9])
+        findPath(start: [0,0], end: [2422,1520])
     }
 
     @IBAction func bdg3(_ sender: UIButton) {

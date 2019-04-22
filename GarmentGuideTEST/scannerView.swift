@@ -17,6 +17,8 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         textField.text = ""
+        createNodes(fileName: "beacon1", fileType:"json")
+        createZones(fileName:"zone", fileType:"json")
         self.beaconScanner = BeaconScanner()
         self.beaconScanner!.delegate = self
         self.beaconScanner!.startScanning()
@@ -39,9 +41,13 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
     
     func trilaterate(){
         availableBeacons.sort(by: {$0.distance < $1.distance})
-        if (availableBeacons[0].distance > 0 && availableBeacons[1].distance > 0 && availableBeacons[2].distance > 0) {
+        if (availableBeacons[0].distance != Double.infinity && availableBeacons[1].distance != Double.infinity && availableBeacons[2].distance != Double.infinity) {
             let loc: (Double, Double) = trilateration(point1: availableBeacons[0].loc, point2: availableBeacons[1].loc, point3: availableBeacons[2].loc, r1: availableBeacons[0].distance, r2: availableBeacons[1].distance, r3: availableBeacons[2].distance)
             print (loc)
+            if (!loc.0.isNaN && !loc.1.isNaN) {
+                findPath(start: [Int(loc.0),Int(loc.1)], end: [destination[0],destination[1]])
+            //next step
+            }
         }
     }
     
@@ -88,7 +94,7 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                                 sum = 0
                                 var k = 0
                                 for j in 0...(recRSSIsize - 1) {
-                                    if (availableBeacons[i].recRSSI[j] <= availableBeacons[i].meanRSSI + Int(1 * availableBeacons[i].stdRSSI)) && (availableBeacons[i].recRSSI[j] >= availableBeacons[i].meanRSSI - Int(1 * availableBeacons[i].stdRSSI)) {
+                                    if (availableBeacons[i].recRSSI[j] <= availableBeacons[i].meanRSSI + Int(1.5 * availableBeacons[i].stdRSSI)) && (availableBeacons[i].recRSSI[j] >= availableBeacons[i].meanRSSI - Int(1.5 * availableBeacons[i].stdRSSI)) {
                                         sum += availableBeacons[i].recRSSI[j]
                                         k += 1
                                     }
@@ -162,6 +168,7 @@ var availableBeacons = [ParsedBeacon]()
 let recRSSIsize = 20
 let pathLoss = 1.4 //Rise:2.75     //2-3
 let RSSIm = -48         //Transmission Power: 3:-77 | 6:-69 | 7:-59
+var destination: [Int] = [2422,1520]
 
 class ParsedBeacon {
     let name: String
@@ -198,6 +205,6 @@ class ParsedBeacon {
         self.stdRSSI = 0
         self.repHalf = 1
         self.repI = 10
-        self.distance = -1
+        self.distance = Double.infinity
     }
 }

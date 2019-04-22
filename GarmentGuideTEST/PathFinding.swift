@@ -208,25 +208,57 @@ func printNodes(path: [Node]) {
  - Returns:
     correction angle
  -------------------------------------*/
-/*func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
+func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
     let northAngle = 45.0
-    let userAngle = startAngle
-    let xDist = abs(Double(start[0]-end[0]))
-    let yDist = abs(Double(start[1]-end[1]))
-    /*if (end[0] > start[0] && end[1] > start[1]) {           //Node in top right
-        let node = atan(yDist/xDist) * 180 / Double.pi
-       
+    let userAngle = abs(360 - startAngle)
+    var temp: Double
+    if startAngle > northAngle {
+        temp = userAngle + northAngle
     }
-    else if (end[0] > start[0] && end[1] < start[1]) {      //Node in bottom right
-        
+    else {
+        temp = northAngle - startAngle
     }
-    else if (end[0] < start[0] && end[1] < start[1]) {      //Node in bottom left
-        
+    temp = abs(temp-360)
+    temp = abs(360-temp)
+    let nodeVX = Double(end[0] - start[0])
+    let nodeVY = Double(end[1] - start[1])
+    var nodeA:Double
+    print("Temp: ", temp)
+    
+    if nodeVX > 0 && nodeVY >= 0 { // Q1
+        nodeA = (atan(nodeVY/nodeVX) * 180 / Double.pi)
     }
-    else {                                                  //Node in top left
-        
-    }*/
-}*/
+    else if nodeVX < 0 && nodeVY >= 0{ // Q2
+        nodeA = 180 + atan(nodeVY/nodeVX) * 180 / Double.pi
+    }
+    else if nodeVX < 0 && nodeVY <= 0{ // Q3
+        nodeA = -180 + atan((nodeVY/nodeVX) - (Double.pi)) * 180 / Double.pi
+    }
+    else if nodeVX > 0 && nodeVY <= 0{ // Q4
+        nodeA = 360 + atan(nodeVY/nodeVX) * 180 / Double.pi
+    }
+    else{ // nodeVX == 0
+        if (nodeVY > 0) {
+            nodeA = 90
+        }
+        else {
+            nodeA = 270
+        }
+    }
+    print("NodeA: ", nodeA)
+    if (nodeA - temp) < 0 {
+        nodeA = 360 + nodeA - temp
+    }
+    else{
+        nodeA =  nodeA - temp
+    }
+    if (nodeA > 180) {
+        return abs(360 - nodeA)
+    }
+    else {
+        return -nodeA
+    }
+}
 
 /*------------------------------------
  Calls other functions to find and display optimal path.
@@ -238,30 +270,40 @@ func printNodes(path: [Node]) {
     prints each step of path along with values
  -------------------------------------*/
 func findPath(start: [Int], end:[Int]) {
+    var optimalPath:[Node] = []
+    var correctionAngle:Double
     if (nodeDict[start] != nil) {            //If user is located at existing node
-        let path: [Node] = aStar(start: start, end:end)
-        printNodes(path: path)
+        optimalPath = aStar(start: start, end:end)
     }
     else {
         //Zone guidance function
         zoneNodes = findZone(coord: start)      //Could be more than one zone
-        var optimalPath:[Node] = []
-        for node in zoneNodes {
-            let path = aStar(start: node.coordinates, end: end)
-            if (path[0].coordinates != [-1,-1]) {
-                if (optimalPath.isEmpty) {
-                    optimalPath = path.map{$0.copy() as! Node}
-                }
-                else if (optimalPath[0].f > path[0].f) {
-                    optimalPath = path.map{$0.copy() as! Node}
+        if zoneNodes.count > 0 {
+            for node in zoneNodes {
+                let path = aStar(start: node.coordinates, end: end)
+                if (path[0].coordinates != [-1,-1]) {
+                    if (optimalPath.isEmpty) {
+                        optimalPath = path.map{$0.copy() as! Node}
+                    }
+                    else if (optimalPath[0].f > path[0].f) {
+                        optimalPath = path.map{$0.copy() as! Node}
+                    }
                 }
             }
         }
-        //let correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: //orientation)
-        print("----------------")
-        //print("Angle to First Node: ", correctionAngle)
-        printNodes(path: optimalPath)
+        else {
+            optimalPath = []
+        }
     }
+    if optimalPath.count > 0 {
+        correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: orientation)
+    }
+    else {
+        correctionAngle = 360
+    }
+    print("----------------")
+    print("Angle to First Node: ", correctionAngle)
+    printNodes(path: optimalPath)
 }
 
 

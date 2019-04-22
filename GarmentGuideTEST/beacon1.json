@@ -1,70 +1,130 @@
 {
     "EABA":[
         {
-            "label": "Girl's Restroom",
+            "label": "Classroom 1: Entrance",
             "type": "location",
-            "coordinates": [2,2],
-            "connections": [[2,3]]
+            "coordinates": [2422,1520],
+            "connections": [[2422,1627],[2629,244]]
         },
         {
-            "label": "w1",
-            "type": "waypoint",
-            "coordinates": [2,3],
-            "connections": [[2,2],[3,3]]
+            "label": "Classroom 1: Back Exit",
+            "type": "location",
+            "coordinates": [2629,244],
+            "connections": [[2422,1520]]
         },
         {
-            "label": "w2",
+            "label": "N3",
             "type": "waypoint",
-            "coordinates": [3,3],
-            "connections": [[2,3],[3,4]]
+            "coordinates": [2422,1627],
+            "connections": [[2422,1520],[2679,1627]]
         },
         {
-            "label": "w3",
+            "label": "N4",
             "type": "waypoint",
-            "coordinates": [3,4],
-            "connections": [[3,3],[3,6],[5,4]]
+            "coordinates": [2679,1627],
+            "connections": [[2422,1627],[2679,1803]]
         },
         {
-            "label": "w4",
+            "label": "N5",
             "type": "waypoint",
-            "coordinates": [3,6],
-            "connections": [[3,4],[2,6],[5,6]]
+            "coordinates": [2679,1803],
+            "connections": [[2679,1627],[2422,1803]]
         },
         {
-            "label": "w4",
+            "label": "N6",
             "type": "waypoint",
-            "coordinates": [5,4],
-            "connections": [[3,4],[5,6]]
+            "coordinates": [2422,1803],
+            "connections": [[2679,1803],[2422,1931]]
         },
         {
-            "label": "w4",
+            "label": "N7",
             "type": "waypoint",
-            "coordinates": [5,6],
-            "connections": [[5,4],[3,6]]
+            "coordinates": [2422,1931],
+            "connections": [[2422,1803],[1704,1931],[2430,2409]]
         },
         {
-            "label": "w4",
-            "type": "waypoint",
-            "coordinates": [2,6],
-            "connections": [[3,6],[2,7]]
+            "label": "Building Entrance",
+            "type": "location",
+            "coordinates": [2430,2409],
+            "connections": [[2422,1931]]
         },
         {
-            "label": "w4",
+            "label": "N9",
             "type": "waypoint",
-            "coordinates": [2,7],
-            "connections": [[2,6],[3,7]]
+            "coordinates": [1704,1931],
+            "connections": [[1701,2220],[1571,1931],[2422,1931]]
         },
         {
-            "label": "w4",
+            "label": "N10",
             "type": "waypoint",
-            "coordinates": [3,7],
-            "connections": [[2,7],[3,9]]
+            "coordinates": [1571,1931],
+            "connections": [[1704,1931],[1427,1931]]
         },
         {
-            "label": "w4",
+            "label": "N11",
             "type": "waypoint",
-            "coordinates": [3,9],
-            "connections": [[3,7]]
+            "coordinates": [1427,1931],
+            "connections": [[1571,1931],[1245,1931],[1424,2220]]
+        },
+        {
+            "label": "Conference Room: Entrance 1",
+            "type": "location",
+            "coordinates": [1424,2220],
+            "connections": [[1427,1931]]
+        },
+        {
+            "label": "Conference Room: Entrance 2",
+            "type": "location",
+            "coordinates": [1701,2220],
+            "connections": [[1704,1931]]
+        },
+        {
+            "label": "N14",
+            "type": "waypoint",
+            "coordinates": [1245,1931],
+            "connections": [[1427,1931],[1300,1993],[1130,1993],[1245,1797]]
+        },
+        {
+            "label": "Men's Restroom",
+            "type": "location",
+            "coordinates": [1300,1993],
+            "connections": [[1245,1931]]
+        },
+        {
+            "label": "Women's Restroom",
+            "type": "location",
+            "coordinates": [1130,1993],
+            "connections": [[1245,1931]]
+        },
+        {
+            "label": "N17",
+            "type": "waypoint",
+            "coordinates": [1245,1797],
+            "connections": [[1519,1797],[1245,1931]]
+        },
+        {
+            "label": "N18",
+            "type": "waypoint",
+            "coordinates": [1519,1797],
+            "connections": [[1245,1797],[1519,1642]]
+        },
+        {
+            "label": "N19",
+            "type": "waypoint",
+            "coordinates": [1519,1642],
+            "connections": [[1519,1797],[1394,1642]]
+        },
+        {
+            "label": "N20",
+            "type": "waypoint",
+            "coordinates": [1394,1642],
+            "connections": [[1519,1642],[1392,1576]]
+        },
+        {
+            "label": "Classroom 2: Entrance",
+            "type": "location",
+            "coordinates": [1392,1576],
+            "connections": [[1394,1642]]
         }
     ]
 }
