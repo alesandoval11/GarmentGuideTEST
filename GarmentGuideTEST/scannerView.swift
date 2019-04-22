@@ -46,7 +46,15 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
             print (loc)
             if (!loc.0.isNaN && !loc.1.isNaN) {
                 findPath(start: [Int(loc.0),Int(loc.1)], end: [destination[0],destination[1]])
-            //next step
+                if (abs(loc.0 - Double(destination[0])) < err && abs(loc.1 - Double(destination[1])) < err) {
+                    self.beaconScanner.stopScanning()
+                    //finished alert
+                    let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    //exit
+                    
+                }
             }
         }
     }
@@ -169,6 +177,7 @@ let recRSSIsize = 20
 let pathLoss = 1.4 //Rise:2.75     //2-3
 let RSSIm = -48         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 var destination: [Int] = [2422,1520]
+let err = 63.0          //1 meter
 
 class ParsedBeacon {
     let name: String
