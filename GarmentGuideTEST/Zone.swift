@@ -95,6 +95,7 @@ func findZone(coord: [Int]) -> Set<Node>{
             return Set(temp)
         }
     }
+    print("OUT OF ZONE")
     return Set()
 }
 
