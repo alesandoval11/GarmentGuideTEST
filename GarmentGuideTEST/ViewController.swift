@@ -44,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("EABB selected")
         createNodes(fileName: "beacon1", fileType:"json")
         createZones(fileName:"zone", fileType:"json")
-        findPath(start: [0,0], end: [2422,1520])
+        findPath(start: [2500,700], end: [2422,1931])
     }
 
     @IBAction func bdg3(_ sender: UIButton) {

@@ -9,34 +9,19 @@
 import Foundation
 import UIKit
 
-class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate {
+class scannerView: UIViewController, BeaconScannerDelegate {
     
-    @IBOutlet weak var textField: UITextField!
     var beaconScanner: BeaconScanner!
     @IBAction override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        textField.text = ""
         createNodes(fileName: "beacon1", fileType:"json")
         createZones(fileName:"zone", fileType:"json")
+        //send START ROUTE packet
         self.beaconScanner = BeaconScanner()
         self.beaconScanner!.delegate = self
         self.beaconScanner!.startScanning()
         
-    }
-    
-    func printTable() { // debug print function
-        /*
-        DispatchQueue.main.async {
-            self.textField.text? = ""
-            
-            for b in availableBeacons{
-                self.textField.text?.append(b.name + "\t" + String(b.RSSI) + " dB\n\tMean:\n\t")
-                self.textField.text?.append(String(b.meanRSSI) + " dB\n\tStd Dev:\n\t" + String(b.stdRSSI) + " dB\n")
-                self.textField.text?.append(String(b.distance) + " m\n")
-            }
-        }
-         */
     }
     
     func trilaterate(){
@@ -52,6 +37,7 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                     let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     self.present(alert, animated: true)
+                    //send END ROUTE packet
                     //exit
                     
                 }
@@ -61,21 +47,16 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
     
     func didFindBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
         availableBeacons.append(ParsedBeacon(bInfo: beaconInfo))
-        printTable()
     }
     func didLoseBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-        //DispatchQueue.main.async {
             for i in 0...(availableBeacons.count - 1){
                 if availableBeacons[i].id == beaconInfo.beaconID.description {
                     availableBeacons.remove(at: i)
                     break
                 }
             }
-        //}
-        printTable()
     }
     func didUpdateBeacon(beaconScanner: BeaconScanner, beaconInfo: BeaconInfo) {
-      //  DispatchQueue.main.async {
             if beaconInfo.RSSI != 127 && beaconInfo.RSSI >= -75{
                 for i in 0...(availableBeacons.count - 1) {
                     if availableBeacons[i].id == beaconInfo.beaconID.description {
@@ -95,7 +76,6 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                                 }
                                 sumStd /= Double(recRSSIsize)
                                 if sumStd == 0.0 {
-                                    print("sumStd == 0")
                                 }
                                 availableBeacons[i].stdRSSI = sqrt(Double(sumStd))
                                 
@@ -112,7 +92,6 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                                     availableBeacons[i].distance = pow(10,Double((RSSIm - availableBeacons[i].meanRSSI))/Double((10*pathLoss)))
                                 }
                                 trilaterate()
-                                //availableBeacons[i].recRSSI.removeAll()
                             }
                             else { //
                                 if availableBeacons[i].repHalf == 0 {
@@ -133,8 +112,6 @@ class scannerView: UIViewController, UITextFieldDelegate, BeaconScannerDelegate 
                     }
                 }
             }
-       // }
-        printTable()
     }
     func didObserveURLBeacon(beaconScanner: BeaconScanner, URL: NSURL, RSSI: Int) {}
 }

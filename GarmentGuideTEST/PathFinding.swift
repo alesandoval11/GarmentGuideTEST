@@ -223,7 +223,6 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
     let nodeVX = Double(end[0] - start[0])
     let nodeVY = Double(end[1] - start[1])
     var nodeA:Double
-    print("Temp: ", temp)
     
     if nodeVX > 0 && nodeVY >= 0 { // Q1
         nodeA = (atan(nodeVY/nodeVX) * 180 / Double.pi)
@@ -245,7 +244,6 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
             nodeA = 270
         }
     }
-    print("NodeA: ", nodeA)
     if (nodeA - temp) < 0 {
         nodeA = 360 + nodeA - temp
     }
@@ -260,6 +258,13 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
     }
 }
 
+
+//Dummy function
+func sendPacket(angle: Double, distance: Int) {
+    print("Angle: ", angle)
+    print("Distance: ", distance)
+}
+
 /*------------------------------------
  Calls other functions to find and display optimal path.
  Handles starting locations at nodes or not at nodes.
@@ -272,11 +277,14 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
 func findPath(start: [Int], end:[Int]) {
     var optimalPath:[Node] = []
     var correctionAngle:Double
+    var atNode:Bool = false
     if (nodeDict[start] != nil) {            //If user is located at existing node
         optimalPath = aStar(start: start, end:end)
+        atNode = true
     }
     else {
         //Zone guidance function
+        atNode = false
         zoneNodes = findZone(coord: start)      //Could be more than one zone
         if zoneNodes.count > 0 {
             for node in zoneNodes {
@@ -301,9 +309,16 @@ func findPath(start: [Int], end:[Int]) {
     else {
         correctionAngle = 360
     }
-    print("----------------")
-    print("Angle to First Node: ", correctionAngle)
-    printNodes(path: optimalPath)
+    //call Esteban's function with inputs: correctionAngle, g at end + euclidean of current location to first node
+    if (atNode) {
+        sendPacket(angle: correctionAngle, distance: optimalPath[0].g)
+    }
+    else {
+        sendPacket(angle: correctionAngle, distance: optimalPath[0].g + heuristic(start: start, end: optimalPath[optimalPath.count-1].coordinates))
+    }
 }
+
+
+
 
 
