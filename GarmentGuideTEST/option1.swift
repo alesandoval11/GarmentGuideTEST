@@ -154,12 +154,20 @@ class option1: UIViewController, BeaconScannerDelegate  {
         }
     }
     @IBAction func rotationButton(_ sender: Any) {
+       
+        rot(angle: 30.0)
+        self.rot(angle: -30.0)
+      
+        
+        
+     
+    }
+    func rot(angle: Double){
+        let x = angle
         let image2 = UIImage(view: oldimage)
-        let image3 = image2.imageRotatedByDegrees(degrees: 90.0)
-     
-        //print("rotateFunc")
+        let image3 = image2.fixedOrientation().imageRotatedByDegrees(degrees: CGFloat(x))
         oldimage.image = image3
-     
+        
     }
     @IBAction func goBack1(_ sender: Any) {
         self.beaconScanner.stopScanning()
