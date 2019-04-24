@@ -132,7 +132,7 @@ int server::sendPackage(int proximity, double angle, int socket){
     int count = 0;
     while(count < 1){
         sleep(1);
-        cout << "hello" << endl;
+        //cout << "hello" << endl;
         int ret = send(socket, packet.c_str() , strlen(packetCharArr), 0);
         if(ret < 1){
             cout << errno << endl;
@@ -146,9 +146,9 @@ int server::sendPackage(int proximity, double angle, int socket){
 
     return 0;
 }
-int server::closeConnection(){
+int server::closeConnection(int socket){
     cout << "Closing connection..."<< endl;
-    int ret = shutdown(server_fd, SHUT_RDWR);
+    int ret = shutdown(socket, SHUT_RDWR);
     if(ret < 0) cout << errno << endl;
     return 0;
 }

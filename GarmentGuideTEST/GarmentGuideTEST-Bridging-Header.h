@@ -4,6 +4,6 @@
 
 int establishConnection();
 int sendPackage(int, double, int);
-int closeConnection();
+int closeConnection(int);
 
 

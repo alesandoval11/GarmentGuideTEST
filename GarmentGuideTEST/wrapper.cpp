@@ -22,10 +22,10 @@ extern "C" int establishConnection()
 extern "C" int sendPackage(int prox, double angle, int socket){
     return server().sendPackage(prox, angle, socket);
 }
-extern "C" int closeConnection()
+extern "C" int closeConnection(int socket)
 {
     // Create an instance of A, defined in
     // the library, and call getInt() on it:
-    return server().closeConnection();
+    return server().closeConnection(socket);
 }
 

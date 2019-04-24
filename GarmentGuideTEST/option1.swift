@@ -210,8 +210,8 @@ class option1: UIViewController, BeaconScannerDelegate  {
         availableBeacons.sort(by: {$0.distance < $1.distance})
         if (availableBeacons[0].distance != Double.infinity && availableBeacons[1].distance != Double.infinity && availableBeacons[2].distance != Double.infinity) {
             let loc: (Double, Double) = trilateration(point1: availableBeacons[0].loc, point2: availableBeacons[1].loc, point3: availableBeacons[2].loc, r1: availableBeacons[0].distance, r2: availableBeacons[1].distance, r3: availableBeacons[2].distance)
-            print("-----------------------")
-            print(loc)
+            print("----------------------------------------------------")
+            print("location: ", loc)
             if (!loc.0.isNaN && !loc.1.isNaN) {
                 
                 contents = findPath(start: [Int(loc.0),Int(loc.1)], end: [destination[0],destination[1]])
@@ -225,7 +225,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
                     
                     if (abs(loc.0 - Double(destination[0])) < err && abs(loc.1 - Double(destination[1])) < err) {
                         self.beaconScanner.stopScanning()
-                        
+                        closeConnection(self.socket)
                         //finished alert
                         let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

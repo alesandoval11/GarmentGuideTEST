@@ -23,7 +23,7 @@ public:
   std::string packageCreator(double, int);
   int establishConnection();
   int sendPackage(int, double, int);
-    int closeConnection();
+  int closeConnection(int);
 private:
     int server_fd, new_socket;
     struct sockaddr_in address;
