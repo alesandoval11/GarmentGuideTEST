@@ -133,7 +133,7 @@ int server::sendPackage(int proximity, double angle, int socket){
     while(count < 1){
         sleep(1);
         cout << "hello" << endl;
-        int ret = send(socket, packet.c_str() , strlen(packetCharArr), 0 );
+        int ret = send(socket, packet.c_str() , strlen(packetCharArr), 0);
         if(ret < 1){
             cout << errno << endl;
         }

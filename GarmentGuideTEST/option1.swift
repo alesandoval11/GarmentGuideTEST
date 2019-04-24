@@ -219,7 +219,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
                     pathAngle = contents[1]
                     print("correctionAngle: ", contents[1])
                     // send package
-                    sendPackage(Int32(contents[0]), contents[1], self.socket)
+                    sendPackage(Int32(contents[0]), contents[1]+180, self.socket)
                     
                     self.rotateImage(angle: pathAngle)
                     
