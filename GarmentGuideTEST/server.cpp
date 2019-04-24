@@ -146,3 +146,9 @@ int server::sendPackage(int proximity, double angle, int socket){
 
     return 0;
 }
+int server::closeConnection(){
+    cout << "Closing connection..."<< endl;
+    int ret = shutdown(server_fd, SHUT_RDWR);
+    if(ret < 0) cout << errno << endl;
+    return 0;
+}
