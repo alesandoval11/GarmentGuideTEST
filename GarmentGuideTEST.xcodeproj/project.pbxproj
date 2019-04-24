@@ -55,7 +55,6 @@
 		01B6CD4B2225DAFC00A71469 /* GarmentGuideTESTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarmentGuideTESTTests.swift; sourceTree = "<group>"; };
 		01B6CD4D2225DAFC00A71469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01D72095226E381F00D9621C /* GarmentGuideTEST-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GarmentGuideTEST-Bridging-Header.h"; sourceTree = "<group>"; };
-		01D7209A226E382000D9621C /* test_cpp_bridge-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "test_cpp_bridge-Bridging-Header.h"; sourceTree = "<group>"; };
 		01D7209B226E382000D9621C /* server.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = server.o; sourceTree = "<group>"; };
 		01D720A0226E382000D9621C /* libservercpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libservercpp.a; sourceTree = "<group>"; };
 		01D720A2226E382000D9621C /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
@@ -131,7 +130,6 @@
 				01D720A2226E382000D9621C /* server.cpp */,
 				01D720A8226E382100D9621C /* server.h */,
 				01D7209B226E382000D9621C /* server.o */,
-				01D7209A226E382000D9621C /* test_cpp_bridge-Bridging-Header.h */,
 				01D720A5226E382100D9621C /* wrapper.cpp */,
 				01B6CD362225DAFB00A71469 /* AppDelegate.swift */,
 				01FE41EF222621160062E08C /* thirdView.swift */,

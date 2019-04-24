@@ -155,10 +155,9 @@ class option1: UIViewController, BeaconScannerDelegate  {
     }
     @IBAction func rotationButton(_ sender: Any) {
        
-        rot(angle: 30.0)
-        self.rot(angle: -30.0)
-      
-        
+        onPositionChange(angle: -45.0)
+       
+        self.oldimage.transform = CGAffineTransform.identity
         
      
     }
@@ -169,6 +168,18 @@ class option1: UIViewController, BeaconScannerDelegate  {
         oldimage.image = image3
         
     }
+    
+    
+    func onPositionChange(angle: Double)
+    {
+        UIView.animate(withDuration: 0.1, animations:
+            {
+                var angle_in_degrees:CGFloat = CGFloat(angle) // Calculated Angle.
+                var angle_in_radians = (angle_in_degrees * 3.1415) / 180.0
+                self.oldimage.transform = CGAffineTransform(rotationAngle: angle_in_radians)
+        })
+    }
+    
     @IBAction func goBack1(_ sender: Any) {
         self.beaconScanner.stopScanning()
           self.performSegue(withIdentifier: "goBackEABA", sender: self)
