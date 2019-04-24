@@ -145,7 +145,9 @@ class option1: UIViewController, BeaconScannerDelegate  {
         onPositionChange(angle: -45.0)
         
         self.oldimage.transform = CGAffineTransform.identity
-        
+        let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
      
     }
 
@@ -333,7 +335,7 @@ let recRSSIsize = 20
 let pathLoss = 1.4 //Rise:2.75     //2-3
 let RSSIm = -48         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 var destination: [Int] = [2422,1520]
-let err = 63.0          //1 meter
+let err = 189.0 //2x:126.0 //Old:63.0          //1 meter
 class ParsedBeacon {
     let name: String
     let id: String
