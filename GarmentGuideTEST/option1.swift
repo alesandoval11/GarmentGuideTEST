@@ -165,6 +165,8 @@ class option1: UIViewController, BeaconScannerDelegate  {
     }
     
     @IBAction func goBack1(_ sender: Any) {
+        setInitial()
+        closeConnection(self.socket)
         self.beaconScanner.stopScanning()
           self.performSegue(withIdentifier: "goBackEABA", sender: self)
           
@@ -180,7 +182,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
         self.beaconScanner = BeaconScanner()
         self.beaconScanner!.delegate = self
         self.beaconScanner!.startScanning()
-        self.socket = establishConnection()
+        //self.socket = establishConnection()
         print("Socket: ", self.socket)
        
     }
@@ -227,8 +229,9 @@ class option1: UIViewController, BeaconScannerDelegate  {
                     self.rotateImage(angle: pathAngle)
                     
                     if (abs(loc.0 - Double(destination[0])) < err && abs(loc.1 - Double(destination[1])) < err) {
-                        self.beaconScanner.stopScanning()
+                        setInitial()
                         closeConnection(self.socket)
+                        self.beaconScanner.stopScanning()
                         //finished alert
                         let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -314,7 +317,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
 }
 
 var beaconNames =   [
-    "f7826da6bc5b71e0893e716e687a6a41": ("Beacon1",(2629.0,255.0)), //kt5lbu | -47
+    "f7826da6bc5b71e0893e716e687a6a41": ("Beacon1",(2629.0,255.0)), //kt5lbu | -47 //(2629.0,255.0)
     "f7826da6bc5b71e0893e6d5271344342": ("Beacon2",(2863.0,583.0)), //ktirna | -49
     "f7826da6bc5b71e0893e4159776a586c": ("Beacon3",(2884.0,803.0)), //ktt3md | -52
     "f7826da6bc5b71e0893e37796e48706b": ("Beacon4",(2863.0,1250.0)), //ktdqmh | -52
@@ -351,7 +354,7 @@ let recRSSIsize = 20
 let pathLoss = 1.4 //Rise:2.75     //2-3
 let RSSIm = -48         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 var destination: [Int] = [2422,1520]
-let err = 189.0 //2x:126.0 //Old:63.0          //1 meter
+let err = 252.0 //189.0 //2x:126.0 //Old:63.0          //1 meter
 class ParsedBeacon {
     let name: String
     let id: String

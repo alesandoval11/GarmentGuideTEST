@@ -9,7 +9,9 @@ server::server(){
     server_fd = 0;
     new_socket = 0;
 }
-
+void server::setInitial(){
+    initial = false;
+}
 // Returns hostname for the local computer
 void server::checkHostName(int hostname)
 {
@@ -50,9 +52,15 @@ int server::determineProx(int heuristic_distance){
         return 0;
     }
     else{
-        int closeness = initial_distance - heuristic_distance;
-        int prox = closeness/ratios;
-        return prox;
+        if(heuristic_distance>initial_distance){
+            return 0;
+        }
+        else{
+            int closeness = initial_distance - heuristic_distance;
+            int prox = closeness/ratios;
+            return prox;
+        }
+        
     }
 }
 

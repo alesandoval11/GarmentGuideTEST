@@ -24,8 +24,8 @@ public:
   int establishConnection();
   int sendPackage(int, double, int);
   int closeConnection(int);
+  void setInitial();
 private:
     int server_fd, new_socket;
     struct sockaddr_in address;
-
 };

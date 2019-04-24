@@ -28,4 +28,6 @@ extern "C" int closeConnection(int socket)
     // the library, and call getInt() on it:
     return server().closeConnection(socket);
 }
-
+extern "C" void setInitial(){
+    return server().setInitial();
+}
