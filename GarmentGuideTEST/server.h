@@ -20,8 +20,11 @@ public:
   void checkHostEntry(struct hostent*);
   void checkIPbuffer(char*);
   int determineProx(int);
-  std::string packageCreator(int, int);
-  int runServer();
+  std::string packageCreator(double, int);
+  int establishConnection();
+  int sendPackage(int, double, int);
 private:
+    int server_fd, new_socket;
+    struct sockaddr_in address;
 
 };

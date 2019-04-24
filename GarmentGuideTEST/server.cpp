@@ -5,7 +5,10 @@ int initial_distance = 0;
 bool initial = false;
 
 
-server::server(){}
+server::server(){
+    server_fd = 0;
+    new_socket = 0;
+}
 
 // Returns hostname for the local computer
 void server::checkHostName(int hostname)
@@ -53,27 +56,24 @@ int server::determineProx(int heuristic_distance){
     }
 }
 
-string server::packageCreator(int angle, int prox){
+string server::packageCreator(double angle, int prox){
     
     ostringstream oss;
-    oss << std::setfill('0') << std::setw(3) << angle;
+    oss << std::setfill('0') << std::setw(3) << (int)angle;
     string angle_post =  oss.str();
     string proximity = to_string(prox);
     string message = angle_post + proximity;
-    cout << "message: " << message << endl;
+    //cout << "message: " << message << endl;
     return message;
     
 }
 
-int server::runServer()
+int server::establishConnection()
 {
+    // start of create connection
     cout << "starting" << endl;
-    int server_fd, new_socket, valread;
-    struct sockaddr_in address;
     const int opt = 1;
     int addrlen = sizeof(address);
-    char buffer[1024] = {0};
-    char *hello = "Hello from server";
     cout << "Socket" << endl;
 
     int x = server_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -114,22 +114,35 @@ int server::runServer()
    {
             cout << "Accept failed" << endl;
    }
-   
-   string packet = packageCreator(123,determineProx(23));
-   cout << packet <<endl;
-   char packetCharArr[packet.size() + 1];
-   strcpy(packetCharArr, packet.c_str());
-    cout << packet.c_str() << endl;
-    //valread = read( new_socket , buffer, 1024);
-    //printf("%s\n",buffer );
-    while(true){
-        sleep(2);
-        cout << "hello" << endl;
-        send(new_socket , packet.c_str() , 4, 0 );
-    }
-   //send(new_socket , packetCharArr , strlen(packetCharArr) , 0 );
-  //  printf("Hello message sent\n");
+    cout << "in establish connection" << new_socket << endl;
+    // end createConnection
 
+    return new_socket;
+}
+
+int server::sendPackage(int proximity, double angle, int socket){
+    // start of send
+    string packet = packageCreator(angle, determineProx(proximity));
+    //cout << packet <<endl;
+    char packetCharArr[packet.size() + 1];
+    strcpy(packetCharArr, packet.c_str());
+    cout << "Packet contents: " << packet.c_str() << endl;
+    //valread = read( new_socket , buffer, 1024);
+    //printf("%s\n",buffer )
+    int count = 0;
+    while(count < 1){
+        sleep(1);
+        cout << "hello" << endl;
+        int ret = send(socket, packet.c_str() , strlen(packetCharArr), 0 );
+        if(ret < 1){
+            cout << errno << endl;
+        }
+        //cout << "socket value: " << new_socket << endl;
+        count++;
+    }
+    // end send
+    //send(new_socket , packetCharArr , strlen(packetCharArr) , 0 );
+    //  printf("Hello message sent\n");
 
     return 0;
 }

@@ -13,9 +13,12 @@
 // compile the function in such a way that
 // it can be called from C
 // (and Swift).
-extern "C" int runServer()
+extern "C" int establishConnection()
 {
     // Create an instance of A, defined in
     // the library, and call getInt() on it:
-    return server().runServer();
+    return server().establishConnection();
+}
+extern "C" int sendPackage(int prox, double angle, int socket){
+    return server().sendPackage(prox, angle, socket);
 }

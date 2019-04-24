@@ -257,12 +257,6 @@ func calculateAngle(start:[Int], end:[Int], startAngle:Double) -> Double{
 }
 
 
-//Dummy function
-func sendPacket(angle: Double, distance: Int) {
-    print("Angle: ", angle)
-    print("Distance: ", distance)
-}
-
 /*------------------------------------
  Calls other functions to find and display optimal path.
  Handles starting locations at nodes or not at nodes.
@@ -272,7 +266,7 @@ func sendPacket(angle: Double, distance: Int) {
  - Returns:
  prints each step of path along with values
  -------------------------------------*/
-func findPath(start: [Int], end:[Int])->Double {
+func findPath(start: [Int], end:[Int])->[Double] {
     var optimalPath:[Node] = []
     //var correctionAngle:Double
     var atNode:Bool = false
@@ -303,20 +297,17 @@ func findPath(start: [Int], end:[Int])->Double {
     }
     if optimalPath.count > 0 {
         correctionAngle = calculateAngle(start: start, end: optimalPath[optimalPath.count-1].coordinates, startAngle: orientation)
+        if (atNode) {
+            return [Double(optimalPath[0].g), correctionAngle]
+        }
+        else {
+            return [Double(optimalPath[0].g + heuristic(start: start, end: optimalPath[optimalPath.count-1].coordinates)), correctionAngle]
+        }
     }
     else {
         correctionAngle = 360
+        return []
     }
-    //call Esteban's function with inputs: correctionAngle, g at end + euclidean of current location to first node
-    /*
-    if (atNode) {
-        sendPacket(angle: correctionAngle, distance: optimalPath[0].g)
-    }
-    else {
-        sendPacket(angle: correctionAngle, distance: optimalPath[0].g + heuristic(start: start, end: optimalPath[optimalPath.count-1].coordinates))
-    }
- */
-    return correctionAngle
 }
 
 

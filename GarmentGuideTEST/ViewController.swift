@@ -71,7 +71,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     @IBAction func bdg1(_ sender: UIButton) {
         // "EABA"
-        print("running server: \(runServer())")
         self.performSegue(withIdentifier: "SegueView2", sender: self)
         print("EABA selected")
  

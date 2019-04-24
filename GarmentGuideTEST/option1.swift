@@ -128,6 +128,7 @@ func imageRotatedByDegrees(oldImage: UIImage, deg degrees: CGFloat) -> UIImage {
 class option1: UIViewController, BeaconScannerDelegate  {
      var beaconScanner: BeaconScanner!
     var prevRotation: CGFloat = 0.0
+    var socket: Int32 = 0
     @IBOutlet weak var oldimage: UIImageView!
     
 
@@ -176,6 +177,8 @@ class option1: UIViewController, BeaconScannerDelegate  {
         self.beaconScanner = BeaconScanner()
         self.beaconScanner!.delegate = self
         self.beaconScanner!.startScanning()
+        self.socket = establishConnection()
+        print("Socket: ", self.socket)
        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -202,25 +205,35 @@ class option1: UIViewController, BeaconScannerDelegate  {
     }
     
     func trilaterate(){
+        var contents:[Double] = []
         var pathAngle: Double = 0.0
         availableBeacons.sort(by: {$0.distance < $1.distance})
         if (availableBeacons[0].distance != Double.infinity && availableBeacons[1].distance != Double.infinity && availableBeacons[2].distance != Double.infinity) {
             let loc: (Double, Double) = trilateration(point1: availableBeacons[0].loc, point2: availableBeacons[1].loc, point3: availableBeacons[2].loc, r1: availableBeacons[0].distance, r2: availableBeacons[1].distance, r3: availableBeacons[2].distance)
-            print (loc)
+            print("-----------------------")
+            print(loc)
             if (!loc.0.isNaN && !loc.1.isNaN) {
-                pathAngle = findPath(start: [Int(loc.0),Int(loc.1)], end: [destination[0],destination[1]])
-                print("correctionAngle: ", pathAngle)
-                self.rotateImage(angle: pathAngle)
                 
-                if (abs(loc.0 - Double(destination[0])) < err && abs(loc.1 - Double(destination[1])) < err) {
-                    self.beaconScanner.stopScanning()
-                    //finished alert
-                    let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                    //send END ROUTE packet
-                    //exit
+                contents = findPath(start: [Int(loc.0),Int(loc.1)], end: [destination[0],destination[1]])
+                if (contents.count == 2) {
+                    pathAngle = contents[1]
+                    print("correctionAngle: ", contents[1])
+                    // send package
+                    sendPackage(Int32(contents[0]), contents[1], self.socket)
                     
+                    self.rotateImage(angle: pathAngle)
+                    
+                    if (abs(loc.0 - Double(destination[0])) < err && abs(loc.1 - Double(destination[1])) < err) {
+                        self.beaconScanner.stopScanning()
+                        
+                        //finished alert
+                        let alert = UIAlertController(title: "Routing Complete!", message: "You have arrived at your destination.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                        //send END ROUTE packet
+                        //exit
+                        
+                    }
                 }
             }
         }
