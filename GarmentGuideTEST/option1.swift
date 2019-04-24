@@ -127,7 +127,7 @@ func imageRotatedByDegrees(oldImage: UIImage, deg degrees: CGFloat) -> UIImage {
 
 class option1: UIViewController, BeaconScannerDelegate  {
      var beaconScanner: BeaconScanner!
-    var prevRotation: Double = 0.0
+    var prevRotation: CGFloat = 0.0
     @IBOutlet weak var oldimage: UIImageView!
     
 
@@ -136,21 +136,11 @@ class option1: UIViewController, BeaconScannerDelegate  {
     @IBOutlet weak var backBut: UIButton!
     
     public func rotateImage (angle: Double){
-        onPositionChange(angle: angle * -1)
-        
-        self.oldimage.transform = CGAffineTransform.identity
-    }
-
-    public func rotateFunc (cAngle: Double){
         DispatchQueue.main.async {
-            let image2 = UIImage(view: self.oldimage)
-            let image3 = image2.imageRotatedByDegrees(degrees: CGFloat(cAngle))
-            self.prevRotation = cAngle
-            print("RotateFunc: ", cAngle)
-            //print("rotateFunc")
-           self.oldimage.image = image3
+            self.onPositionChange(angle: angle)
         }
     }
+
     @IBAction func rotationButton(_ sender: Any) {
         onPositionChange(angle: -45.0)
         
@@ -158,21 +148,13 @@ class option1: UIViewController, BeaconScannerDelegate  {
         
      
     }
-    func rot(angle: Double){
-        let x = angle
-        let image2 = UIImage(view: oldimage)
-        let image3 = image2.fixedOrientation().imageRotatedByDegrees(degrees: CGFloat(x))
-        oldimage.image = image3
-        
-    }
-    
-    
+
     func onPositionChange(angle: Double)
     {
-        UIView.animate(withDuration: 0.1, animations:
+        UIView.animate(withDuration: 0.25, animations:
             {
-                var angle_in_degrees:CGFloat = CGFloat(angle) // Calculated Angle.
-                var angle_in_radians = (angle_in_degrees * 3.1415) / 180.0
+                let angle_in_degrees:CGFloat = CGFloat(angle) // Calculated Angle.
+                let angle_in_radians = (angle_in_degrees * 3.1415) / 180.0
                 self.oldimage.transform = CGAffineTransform(rotationAngle: angle_in_radians)
         })
     }
