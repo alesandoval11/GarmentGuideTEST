@@ -3,7 +3,7 @@
 using namespace std;
 int initial_distance = 0;
 bool initial = false;
-
+int ratios = 0;
 
 server::server(){
     server_fd = 0;
@@ -42,16 +42,16 @@ void server::checkIPbuffer(char *IPbuffer)
 }
 
 int server::determineProx(int heuristic_distance){
-    int ratio = 0;
+
     if(!initial){
         initial_distance = heuristic_distance;
-        ratio = initial_distance/5;
+        ratios = initial_distance/5;
         initial = true;
         return 0;
     }
     else{
         int closeness = initial_distance - heuristic_distance;
-        int prox = closeness/ratio;
+        int prox = closeness/ratios;
         return prox;
     }
 }
