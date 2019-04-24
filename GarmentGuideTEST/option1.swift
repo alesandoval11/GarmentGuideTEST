@@ -129,9 +129,11 @@ class option1: UIViewController, BeaconScannerDelegate  {
      var beaconScanner: BeaconScanner!
     var prevRotation: CGFloat = 0.0
     var socket: Int32 = 0
+    var dLabel: String = ""
     @IBOutlet weak var oldimage: UIImageView!
     
 
+    @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var turnButton: UIButton!
     
     @IBOutlet weak var backBut: UIButton!
@@ -169,6 +171,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
     }
    
     override func viewDidLoad() {
+        destinationLabel.text = dLabel
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         createNodes(fileName: "beacon1", fileType:"json")
