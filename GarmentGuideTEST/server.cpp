@@ -1,17 +1,9 @@
 #include "server.h"
-#include<iostream>
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/socket.h>
-#include <stdlib.h>
-#include <netinet/in.h>
-#include <string.h>
-#include <arpa/inet.h>
-
-#include <sys/types.h>
-#define PORT 80
 
 using namespace std;
+int initial_distance = 0;
+bool initial = false;
+
 
 server::server(){}
 
@@ -45,6 +37,34 @@ void server::checkIPbuffer(char *IPbuffer)
         exit(1);
     }
 }
+
+int server::determineProx(int heuristic_distance){
+    int ratio = 0;
+    if(!initial){
+        initial_distance = heuristic_distance;
+        ratio = initial_distance/5;
+        initial = true;
+        return 0;
+    }
+    else{
+        int closeness = initial_distance - heuristic_distance;
+        int prox = closeness/ratio;
+        return prox;
+    }
+}
+
+string server::packageCreator(int angle, int prox){
+    
+    ostringstream oss;
+    oss << std::setfill('0') << std::setw(3) << angle;
+    string angle_post =  oss.str();
+    string proximity = to_string(prox);
+    string message = angle_post + proximity;
+    cout << "message: " << message << endl;
+    return message;
+    
+}
+
 int server::runServer()
 {
     cout << "starting" << endl;
@@ -88,15 +108,26 @@ int server::runServer()
         cout << "Listen failed" << endl;
 
     }
-  /*if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
+    cout << "before new socket" << endl;
+   if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
                       (socklen_t*)&addrlen))<0)
    {
             cout << "Accept failed" << endl;
-   }*/
-   cout << "asdf" << endl;
+   }
+   
+   string packet = packageCreator(123,determineProx(23));
+   cout << packet <<endl;
+   char packetCharArr[packet.size() + 1];
+   strcpy(packetCharArr, packet.c_str());
+    cout << packet.c_str() << endl;
     //valread = read( new_socket , buffer, 1024);
     //printf("%s\n",buffer );
-    //send(new_socket , hello , strlen(hello) , 0 );
+    while(true){
+        sleep(2);
+        cout << "hello" << endl;
+        send(new_socket , packet.c_str() , 4, 0 );
+    }
+   //send(new_socket , packetCharArr , strlen(packetCharArr) , 0 );
   //  printf("Hello message sent\n");
 
 
