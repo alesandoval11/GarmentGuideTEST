@@ -136,11 +136,9 @@ class option1: UIViewController, BeaconScannerDelegate  {
     @IBOutlet weak var backBut: UIButton!
     
     public func rotateImage (angle: Double){
-        //rotate by -prevRotation
-        //rotate by angle
-        self.rotateFunc(cAngle: -prevRotation)
-        self.rotateFunc(cAngle: angle)
-       // print("rotateImage")
+        onPositionChange(angle: angle * -1)
+        
+        self.oldimage.transform = CGAffineTransform.identity
     }
 
     public func rotateFunc (cAngle: Double){
@@ -154,9 +152,8 @@ class option1: UIViewController, BeaconScannerDelegate  {
         }
     }
     @IBAction func rotationButton(_ sender: Any) {
-       
         onPositionChange(angle: -45.0)
-       
+        
         self.oldimage.transform = CGAffineTransform.identity
         
      

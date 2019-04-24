@@ -53,32 +53,50 @@ class secondView: UIViewController {
     @IBAction func firstButtonAct(_ sender: Any) {
         print("Button for \(firstLabelButton) pressed")
         destination = [2422,1520]
-              self.performSegue(withIdentifier: "toScanner", sender: self)
-
-    }
-    @IBAction func secondButtonAct(_ sender: UIButton) {
-       print("Button for \(secondLabelButton) pressed")
-          destination = [130,132]
         self.performSegue(withIdentifier: "toScanner", sender: self)
 
     }
-    @IBAction func thirdButtonAct(_ sender: UIButton) {
+    @IBAction func secondButtonAct(_ sender: Any) {
+        print("Button for \(secondLabelButton) pressed")
+        destination = [2629,244]
+        self.performSegue(withIdentifier: "toScanner", sender: self)
+
+    }
+    @IBAction func thirdButtonAct(_ sender: Any) {
         print("Button for \(thirdLabelButton) pressed")
-        
+        destination = [2430,2409]
         self.performSegue(withIdentifier: "toScanner", sender: self)
 
     }
-    @IBAction func fourthButtonAct(_ sender: UIButton) {
-            print("Button for \(fourthLabelButton) pressed")
-        
+    @IBAction func fourthButtonAct(_ sender: Any) {
+        print("Button for \(fourthLabelButton) pressed")
+        destination = [1424,2220]
         self.performSegue(withIdentifier: "toScanner", sender: self)
 
     }
     @IBAction func fifthButtonAct(_ sender: Any) {
-         print("Button for \(fifthLabelButton) pressed")
-        
+        print("Button for \(fifthLabelButton) pressed")
+        destination = [1701,2220]
         self.performSegue(withIdentifier: "toScanner", sender: self)
 
+    }
+    @IBAction func sixthButtonAct(_ sender: Any) {
+        print("Button for \(sixthLabelButton) pressed")
+        destination = [1300,1993]
+        self.performSegue(withIdentifier: "toScanner", sender: self)
+        
+    }
+    @IBAction func seventhButtonAct(_ sender: Any) {
+        print("Button for \(seventhLabelButton) pressed")
+        destination = [1130,1993]
+        self.performSegue(withIdentifier: "toScanner", sender: self)
+        
+    }
+    @IBAction func eigthButtonAct(_ sender: Any) {
+        print("Button for \(eigthLabelButton) pressed")
+        destination = [1392,1576]
+        self.performSegue(withIdentifier: "toScanner", sender: self)
+        
     }
 }
 
