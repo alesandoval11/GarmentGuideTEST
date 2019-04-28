@@ -134,7 +134,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
     
 
     @IBOutlet weak var destinationLabel: UILabel!
-    @IBOutlet weak var turnButton: UIButton!
+    //@IBOutlet weak var turnButton: UIButton!
     
     @IBOutlet weak var backBut: UIButton!
     
@@ -143,7 +143,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
             self.onPositionChange(angle: angle)
         }
     }
-
+    /*
     @IBAction func rotationButton(_ sender: Any) {
         onPositionChange(angle: -45.0)
         
@@ -152,7 +152,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true)
      
-    }
+    }*/
 
     func onPositionChange(angle: Double)
     {

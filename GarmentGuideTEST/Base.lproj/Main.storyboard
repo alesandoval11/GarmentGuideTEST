@@ -417,16 +417,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2k6-2r-7hi">
-                                <rect key="frame" x="130" y="100" width="114" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Turn 45 degrees">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="rotationButton:" destination="fe3-hZ-dJR" eventType="touchUpInside" id="iMp-NK-8Wq"/>
-                                </connections>
-                            </button>
                             <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" image="compassArrow" translatesAutoresizingMaskIntoConstraints="NO" id="vLk-N9-Aw8">
                                 <rect key="frame" x="59.5" y="205.5" width="256" height="256"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -469,7 +459,6 @@
                         <outlet property="backBut" destination="O5U-rT-ivv" id="ixL-zx-RDb"/>
                         <outlet property="destinationLabel" destination="qtV-yv-OA5" id="nJD-77-fF3"/>
                         <outlet property="oldimage" destination="vLk-N9-Aw8" id="fpr-uc-11O"/>
-                        <outlet property="turnButton" destination="2k6-2r-7hi" id="8hE-6H-MKL"/>
                         <segue destination="xQc-MQ-lw9" kind="show" identifier="goBackEABA" id="f4p-pS-c5P"/>
                     </connections>
                 </viewController>
