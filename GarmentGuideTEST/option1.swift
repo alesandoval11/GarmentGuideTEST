@@ -182,7 +182,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
         self.beaconScanner = BeaconScanner()
         self.beaconScanner!.delegate = self
         self.beaconScanner!.startScanning()
-        //self.socket = establishConnection()
+        self.socket = establishConnection()
         print("Socket: ", self.socket)
        
     }
@@ -214,7 +214,7 @@ class option1: UIViewController, BeaconScannerDelegate  {
         var pathAngle: Double = 0.0
         availableBeacons.sort(by: {$0.distance < $1.distance})
         if (availableBeacons[0].distance != Double.infinity && availableBeacons[1].distance != Double.infinity && availableBeacons[2].distance != Double.infinity) {
-            let loc: (Double, Double) = trilateration(point1: availableBeacons[0].loc, point2: availableBeacons[1].loc, point3: availableBeacons[2].loc, r1: availableBeacons[0].distance, r2: availableBeacons[1].distance, r3: availableBeacons[2].distance)
+            let loc: (Double, Double) = trilateration(point1: availableBeacons[0].loc, point2: availableBeacons[1].loc, point3: availableBeacons[2].loc, r1: availableBeacons[0].distance * ppm, r2: availableBeacons[1].distance * ppm, r3: availableBeacons[2].distance * ppm)
             print("----------------------------------------------------")
             print("location: ", loc)
             if (!loc.0.isNaN && !loc.1.isNaN) {
@@ -354,7 +354,8 @@ let recRSSIsize = 20
 let pathLoss = 1.4 //Rise:2.75     //2-3
 let RSSIm = -48         //Transmission Power: 3:-77 | 6:-69 | 7:-59
 var destination: [Int] = [2422,1520]
-let err = 252.0 //189.0 //2x:126.0 //Old:63.0          //1 meter
+let ppm = 63.320212
+let err = 200.0 //189.0 //2x:126.0 //Old:63.0          //1 meter
 class ParsedBeacon {
     let name: String
     let id: String
